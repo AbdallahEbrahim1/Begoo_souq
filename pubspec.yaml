@@ -1,5 +1,5 @@
-name: begoo
-description: A new Flutter project.
+name: begoo_souq
+description: Flutter project.
 
 publish_to: 'none'
 
@@ -18,11 +18,15 @@ dependencies:
   shared_preferences:
   animated_splash_screen:
   cupertino_icons: ^1.0.5
+  tf_custom_widgets:
+  carousel_slider:
+  flutter_launcher_icons:
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/images/logo.png"
+
 
 
 

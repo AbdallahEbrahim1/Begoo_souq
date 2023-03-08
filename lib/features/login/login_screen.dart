@@ -1,7 +1,7 @@
-import 'package:begoo/components/custom_text_field/custom_text_field.dart';
-import 'package:begoo/components/navigate/navigate.dart';
-import 'package:begoo/features/forget_password/forget_password_screen.dart';
-import 'package:begoo/features/register/register_screen.dart';
+import 'package:begoo_souq/components/custom_text_field/custom_text_field.dart';
+import 'package:begoo_souq/components/navigate/navigate.dart';
+import 'package:begoo_souq/features/forget_password/forget_password_screen.dart';
+import 'package:begoo_souq/features/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

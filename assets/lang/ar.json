@@ -1,4 +1,3 @@
-
 {
     "OK": "تم",
     "RETRY": "إعادة المحاولة",
@@ -74,7 +73,6 @@
     "SKIP": "تخطي",
     "Login": "تسجيل الدخول",
     "Please_login_to_your_account": "يرجى تسجيل الدخول إلى حسابك.",
-
     "mobile_number": "رقم الهاتف",
     "password": "كلمة المرور",
     "forget_password": "هل نسيت كلمة المرور؟",
@@ -247,6 +245,4 @@
     "PLEASE_SELECT_STAR": "الرجاء تحديد النجم",
     "Choose_the_filter_you_want_to_apply":"اختر عنصر التنقيه الذي ترغب في تطبيقه.",
     "PHONE_VALIDATION": "يجب ألا يقل رقم الجوال عن 7 أرقام"
-
-
 }

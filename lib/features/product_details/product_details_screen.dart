@@ -1,6 +1,15 @@
+import 'package:begoo_souq/features/product_details/widgets/BuildButtonAddToCart.dart';
+import 'package:begoo_souq/features/product_details/widgets/BuildCarouselAndText.dart';
+import 'package:begoo_souq/features/product_details/widgets/BuildCheckShippingText.dart';
+import 'package:begoo_souq/features/product_details/widgets/BuildChooseSizeDetails.dart';
+import 'package:begoo_souq/features/product_details/widgets/BuildDescriptionText.dart';
+import 'package:begoo_souq/features/product_details/widgets/BuildHighlightsPoints.dart';
+import 'package:begoo_souq/features/product_details/widgets/BuildRelatedProducts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
+
+import '../filter/widgets/BuildChooseColor.dart';
 
 class ProductsDetailsScreen extends StatelessWidget {
   const ProductsDetailsScreen({Key? key}) : super(key: key);
@@ -10,7 +19,9 @@ class ProductsDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: Icon(
             Icons.arrow_back,
             color: HexColor('#505050'), // add custom icons also
@@ -38,37 +49,18 @@ class ProductsDetailsScreen extends StatelessWidget {
       ),
       backgroundColor: HexColor('#FAFAFA'),
       body: ListView(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                // '${AppLocalizations.of(context)?.translate("Products")}',
-
-                'Product Name',
-                style: TextStyle(
-                  color: HexColor('#EF5A2E'),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                width: 100.w,
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.ios_share,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite,
-                ),
-              ),
-            ],
-          ),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(8.0),
+        children: const [
+          BuildCarouselAndText(),
+          //BuildDetailsText
+          DescriptionTextWidget(),
+          BuildChooseColor(text: "Choose Color"),
+          BuildChooseSizeDetails(),
+          BuildHighlightsPoints(),
+          BuildCheckShippingText(),
+          BuildRelatedProducts(),
+          BuildButtonAddToCart(),
         ],
       ),
     );

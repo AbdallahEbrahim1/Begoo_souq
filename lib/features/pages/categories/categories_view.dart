@@ -1,5 +1,5 @@
-import 'package:begoo/features/pages/categories/widgets/products_widget.dart';
-import 'package:begoo/res.dart';
+import 'package:begoo_souq/features/pages/categories/widgets/products_widget.dart';
+import 'package:begoo_souq/res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

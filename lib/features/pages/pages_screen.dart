@@ -1,6 +1,6 @@
-import 'package:begoo/features/pages/our_stars/our_stars_screen.dart';
-import 'package:begoo/features/pages/profile/profile_screen.dart';
-import 'package:begoo/features/pages/settings/settings_screen.dart';
+import 'package:begoo_souq/features/pages/our_stars/our_stars_screen.dart';
+import 'package:begoo_souq/features/pages/profile/profile_screen.dart';
+import 'package:begoo_souq/features/pages/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 

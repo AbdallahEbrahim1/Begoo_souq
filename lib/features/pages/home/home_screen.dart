@@ -1,3 +1,5 @@
+import 'package:begoo_souq/components/navigate/navigate.dart';
+import 'package:begoo_souq/features/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -142,7 +144,9 @@ class _HomeScreenState extends State<HomeScreen> {
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    navigateTo(context, const ProductsDetailsScreen());
+                  },
                   child: Padding(
                     padding: EdgeInsets.all(8.0.r),
                     child: Column(
@@ -182,7 +186,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  // navigateTo(context, const ());
+                },
                 child: Text(
                   //'${AppLocalizations.of(context)?.translate("KSA")}',
                   'View All',
@@ -206,7 +212,9 @@ class _HomeScreenState extends State<HomeScreen> {
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    navigateTo(context, const ProductsDetailsScreen());
+                  },
                   child: Padding(
                     padding: EdgeInsets.all(8.0.r),
                     child: Column(
@@ -247,7 +255,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  // navigateTo(context, const ProductsDetailsScreen());
+                },
                 child: Text(
                   //'${AppLocalizations.of(context)?.translate("KSA")}',
                   'View All',
@@ -270,7 +280,9 @@ class _HomeScreenState extends State<HomeScreen> {
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    navigateTo(context, const ProductsDetailsScreen());
+                  },
                   child: Padding(
                     padding: EdgeInsets.all(8.0.r),
                     child: Column(
