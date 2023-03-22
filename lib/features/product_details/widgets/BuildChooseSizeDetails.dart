@@ -25,7 +25,7 @@ class _BuildChooseSizeDetailsState extends State<BuildChooseSizeDetails> {
             fontWeight: FontWeight.bold,
           ),
           ListTile(
-            title: Text('1X1 Meter'),
+            title: const Text('1X1 Meter'),
             leading: Radio<example>(
               value: example.Meter,
               groupValue: groupValue,
@@ -37,7 +37,7 @@ class _BuildChooseSizeDetailsState extends State<BuildChooseSizeDetails> {
             ),
           ),
           ListTile(
-            title: Text('2X2 Meter'),
+            title: const Text('2X2 Meter'),
             leading: Radio(
               value: example.Meterr,
               groupValue: groupValue,

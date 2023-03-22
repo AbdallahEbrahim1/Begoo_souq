@@ -1,5 +1,3 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tf_custom_widgets/widgets/MyText.dart';
 
@@ -23,11 +21,11 @@ class BuildHighlightsPoints extends StatelessWidget {
         Container(
           child: Row(
             children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * .34,
                 //height: 200,
                 child: Image.asset(
-                  Res.florian_klauer_nptLmg6jqDo_unsplash,
+                  Res.florian,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -39,7 +37,7 @@ class BuildHighlightsPoints extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward,
                           color: Colors.deepOrange,
                         ),
@@ -71,7 +69,7 @@ class BuildHighlightsPoints extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward,
                           color: Colors.deepOrange,
                         ),

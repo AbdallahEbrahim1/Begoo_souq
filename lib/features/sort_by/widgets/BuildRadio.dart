@@ -29,7 +29,7 @@ class _BuildRadioState extends State<BuildRadio> {
             onTap: () {},
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              children: const [
                 Text('New Arrivals'),
               ],
             ),
@@ -52,7 +52,7 @@ class _BuildRadioState extends State<BuildRadio> {
             onTap: () {},
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              children: const [
                 Text('Only Sale'),
               ],
             ),
@@ -73,7 +73,7 @@ class _BuildRadioState extends State<BuildRadio> {
             onTap: () {},
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              children: const [
                 Text('Most Reviews'),
               ],
             ),
@@ -94,7 +94,7 @@ class _BuildRadioState extends State<BuildRadio> {
             onTap: () {},
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              children: const [
                 Text('Price Low To High'),
               ],
             ),
@@ -115,7 +115,7 @@ class _BuildRadioState extends State<BuildRadio> {
             onTap: () {},
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              children: const [
                 Text('Price High To Low'),
               ],
             ),
@@ -130,7 +130,7 @@ class _BuildRadioState extends State<BuildRadio> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 40,
         ),
       ],

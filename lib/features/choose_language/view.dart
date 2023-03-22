@@ -1,15 +1,18 @@
+import 'package:begoo_souq/features/choose_country/view.dart';
+import 'package:begoo_souq/res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class ChooseLanguageScreen extends StatefulWidget {
-  const ChooseLanguageScreen({Key? key}) : super(key: key);
+import '../../components/navigate/navigate.dart';
+
+class ChooseLanguageView extends StatefulWidget {
+  const ChooseLanguageView({Key? key}) : super(key: key);
 
   @override
-  _ChooseLanguageScreenState createState() => _ChooseLanguageScreenState();
+  _ChooseLanguageViewState createState() => _ChooseLanguageViewState();
 }
 
-class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
+class _ChooseLanguageViewState extends State<ChooseLanguageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +29,8 @@ class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
               height: 75.h,
               width: 130.w,
               child: ClipRRect(
-                child: SvgPicture.asset(
-                  'assets/images/logo.svg',
+                child: Image.asset(
+                  Res.logo,
                   // AppAssets.APP_BAR_LOGO,
                   fit: BoxFit.fill,
                 ),
@@ -37,21 +40,21 @@ class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
             SizedBox(
               height: 45.h,
             ),
-            Text(
+            const Text(
               // '${AppLocalizations.of(context)?.translate("KSA")}',
               'Choose Language',
-              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 25,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Text(
                   // '${AppLocalizations.of(context)?.translate("KSA")}',
                   'Please Choose your language !',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13,
                   ),
                 ),
@@ -61,51 +64,53 @@ class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
               height: 55,
             ),
             Column(
-              children: [
+              children: const [
                 Text(
                   // '${AppLocalizations.of(context)?.translate("KSA")}',
                   'Lorem Ipsum is simply dummy text of the',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 15,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 5,
                 ),
                 Text(
                   // '${AppLocalizations.of(context)?.translate("KSA")}',
                   'printing and typesetting industry. Lorem',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 15,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 5,
                 ),
                 Text(
                   // '${AppLocalizations.of(context)?.translate("KSA")}',
                   'Ipsum has been the industry\'s standard',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 15,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 5,
                 ),
                 Text(
                   // '${AppLocalizations.of(context)?.translate("KSA")}',
                   'dummy text ever since the 1500s',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 15,
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 55,
+            SizedBox(
+              height: 55.h,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                navigateTo(context, const ChooseCountryView());
+              },
               child: Container(
                 height: 50.h,
                 width: 260.w,
@@ -113,12 +118,12 @@ class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xffef5a2e),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     // '${AppLocalizations.of(context)?.translate("KSA")}',
 
                     'English',
-                    style: const TextStyle(
+                    style: TextStyle(
                       height: 1,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -128,11 +133,13 @@ class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 35,
+            SizedBox(
+              height: 35.h,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                navigateTo(context, const ChooseCountryView());
+              },
               child: Container(
                 height: 50.h,
                 width: 260.w,
@@ -140,12 +147,11 @@ class _ChooseLanguageScreenState extends State<ChooseLanguageScreen> {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.black,
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     // '${AppLocalizations.of(context)?.translate("KSA")}',
-
                     'العربية',
-                    style: const TextStyle(
+                    style: TextStyle(
                       height: 1,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

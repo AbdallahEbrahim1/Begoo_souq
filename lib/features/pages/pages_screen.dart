@@ -102,7 +102,7 @@ class _PagesScreenState extends State<PagesScreen> {
         // fixedColor: HexColor('#EF5A2E'),
         // backgroundColor: HexColor('#1A1818'),
         type: BottomNavigationBarType.fixed,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             // icon: Image.asset('assets/images/noun_Home_3496042.png'),
@@ -110,7 +110,7 @@ class _PagesScreenState extends State<PagesScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.favorite,
             ),
             //backgroundColor: Colors.white,
@@ -121,7 +121,7 @@ class _PagesScreenState extends State<PagesScreen> {
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.star,
             ),
             // icon: Image.asset('assets/images/noun_appreciation_3117367.png'),
@@ -132,12 +132,12 @@ class _PagesScreenState extends State<PagesScreen> {
           ),
           BottomNavigationBarItem(
             // icon: Image.asset('assets/images/'),
-            icon: const Icon(Icons.account_circle_outlined),
+            icon: Icon(Icons.account_circle_outlined),
             // label: '${AppLocalizations.of(context)?.translate("MY_ACCOUNT")}',
             label: 'Account',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.settings,
             ),
             // icon: Image.asset('assets/images/noun_Settings_3496538.png'),
@@ -146,7 +146,7 @@ class _PagesScreenState extends State<PagesScreen> {
             label: 'Settings',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.category),
+            icon: Icon(Icons.category),
             // icon: Image.asset('assets/images/noun_Home_3496042.png'),
             // icon: Icon(Icons.home, color: Colors.white),
             // label: '${AppLocalizations.of(context)?.translate("CATEGORIES")}',

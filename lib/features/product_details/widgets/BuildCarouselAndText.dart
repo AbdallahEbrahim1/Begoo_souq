@@ -13,7 +13,7 @@ class BuildCarouselAndText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const BuildCarouselSlider(
-          image: Res.florian_klauer_nptLmg6jqDo_unsplash,
+          image: Res.florian,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

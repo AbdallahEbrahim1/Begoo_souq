@@ -19,7 +19,7 @@ class _SliderThemeFilterState extends State<SliderThemeFilter> {
       data: SliderThemeData(
         showValueIndicator: ShowValueIndicator.always,
         valueIndicatorColor: MyColors.button,
-        valueIndicatorTextStyle: TextStyle(
+        valueIndicatorTextStyle: const TextStyle(
           color: Colors.white,
           // fontSize: 10,
         ),

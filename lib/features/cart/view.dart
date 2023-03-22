@@ -213,7 +213,7 @@ class _CartScreenState extends State<CartScreen> {
                                   SizedBox(
                                     width: 140.w,
                                   ),
-                                  Icon(Icons.delete)
+                                  const Icon(Icons.delete)
                                 ],
                               )
                             ],

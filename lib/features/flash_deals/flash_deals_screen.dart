@@ -24,7 +24,7 @@ class FlashDealsScreen extends StatelessWidget {
         ),
         actions: [
           Image.asset(
-            'assets/images/noun_cart_1533491.png',
+            'assets/images/noun_cart.png',
             height: 10.h,
             width: 40.w,
           )
@@ -64,7 +64,7 @@ class FlashDealsScreen extends StatelessWidget {
                       // width: 200,
                       width: MediaQuery.of(context).size.width,
                       child: Image.asset(
-                        'assets/images/rock-n-roll-monkey-LEPhZkQbUrk-unsplash.png',
+                        'assets/images/roll-monkey.png',
                         fit: BoxFit.cover,
                       ),
                     ),

@@ -25,7 +25,7 @@ class RecommendedProductsScreen extends StatelessWidget {
         ),
         actions: [
           Image.asset(
-            'assets/images/noun_cart_1533491.png',
+            'assets/images/noun_cart.png',
             height: 10.h,
             width: 40.w,
           )

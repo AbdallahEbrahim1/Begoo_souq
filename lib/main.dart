@@ -1,7 +1,7 @@
-import 'package:begoo_souq/features/splash/SplashImports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/splash/view.dart';
 import 'network/local/cache_helper.dart';
 
 void main() async {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           builder: (context, child) => child!,
-          home: const Splash()),
+          home: const SplashView()),
     );
   }
 }

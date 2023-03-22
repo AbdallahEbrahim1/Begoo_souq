@@ -26,7 +26,7 @@ class OurStarsScreen extends StatelessWidget {
         ),
         actions: [
           Image.asset(
-            'assets/images/noun_cart_1533491.png',
+            'assets/images/noun_cart.png',
             height: 10.h,
             width: 40.w,
           )
@@ -91,7 +91,7 @@ class OurStarsScreen extends StatelessWidget {
                       SizedBox(
                         height: 140.h,
                         child: Image.asset(
-                          'assets/images/pexels-pixabay-459957.png',
+                          'assets/images/pexels-pixabay.png',
                           fit: BoxFit.cover,
                         ),
                       ),

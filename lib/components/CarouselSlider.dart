@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +17,8 @@ class BuildCarouselSlider extends StatelessWidget {
         enableInfiniteScroll: true,
         reverse: true,
         autoPlay: true,
-        autoPlayInterval: Duration(seconds: 3),
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
+        autoPlayInterval: const Duration(seconds: 3),
+        autoPlayAnimationDuration: const Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
         enlargeCenterPage: true,
         // onPageChanged: callbackFunction,
@@ -31,7 +30,7 @@ class BuildCarouselSlider extends StatelessWidget {
           builder: (BuildContext context) {
             return Container(
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              margin: const EdgeInsets.symmetric(horizontal: 10.0),
               // decoration: BoxDecoration(color: Colors.red),
               child: Image.asset(
                 image,

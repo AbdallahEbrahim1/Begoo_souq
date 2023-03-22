@@ -1,13 +1,18 @@
-part of 'SplashImports.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:begoo_souq/features/choose_language/view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Splash extends StatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+import '../../res.dart';
+
+class SplashView extends StatefulWidget {
+  const SplashView({Key? key}) : super(key: key);
 
   @override
-  _SplashState createState() => _SplashState();
+  _SplashViewState createState() => _SplashViewState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,12 +21,12 @@ class _SplashState extends State<Splash> {
           tag: Res.logo,
           child: Image.asset(
             Res.logo,
-            width: 200,
-            height: 150,
+            width: 200.w,
+            height: 150.h,
           ),
         ),
         duration: 3000,
-        nextScreen: PagesScreen(),
+        nextScreen: const ChooseLanguageView(),
       ),
     );
 

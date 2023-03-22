@@ -52,7 +52,7 @@ class OffersScreen extends StatelessWidget {
                     // width: 200,
                     width: MediaQuery.of(context).size.width,
                     child: Image.asset(
-                      'assets/images/florian-klauer-nptLmg6jqDo-unsplash.png',
+                      'assets/images/florian.png',
                       fit: BoxFit.cover,
                     ),
                   ),

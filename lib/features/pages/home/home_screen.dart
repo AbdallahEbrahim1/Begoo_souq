@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       //'${AppLocalizations.of(context)?.translate("KSA")}',
                       'Home',
                     ),
-                    leading: const Icon(Icons.home_outlined),
+                    leading: Icon(Icons.home_outlined),
                   ),
                 ),
                 const Divider(),
@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             icon: Image.asset(
-              'assets/images/noun_cart_1533491.png',
+              'assets/images/noun_cart.png',
               height: 20.h,
               // width: 20.w,
             ),
@@ -226,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadius.circular(20.r),
                           ),
                           child: Image.asset(
-                            'assets/images/pexels-pixabay-459957.png',
+                            'assets/images/pexels-pixabay.png',
                             fit: BoxFit.fill,
                           ),
                         ),

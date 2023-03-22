@@ -13,15 +13,15 @@ class ChooseColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         top: 5,
         right: 10,
       ),
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       height: 50,
       width: 50,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
         shape: BoxShape.rectangle,
         border: Border.all(
           color: isSelected ? Colors.red : Colors.grey,
@@ -29,7 +29,7 @@ class ChooseColor extends StatelessWidget {
       ),
       child: DecoratedBox(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
           color: color,
           shape: BoxShape.rectangle,
         ),

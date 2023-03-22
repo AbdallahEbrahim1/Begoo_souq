@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class UpdatePasswordScreen extends StatefulWidget {
-  const UpdatePasswordScreen({Key? key}) : super(key: key);
+class UpdatePasswordView extends StatefulWidget {
+  const UpdatePasswordView({Key? key}) : super(key: key);
 
   @override
-  _UpdatePasswordScreenState createState() => _UpdatePasswordScreenState();
+  _UpdatePasswordViewState createState() => _UpdatePasswordViewState();
 }
 
-class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
+class _UpdatePasswordViewState extends State<UpdatePasswordView> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
@@ -27,11 +27,13 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white54,
-        title: const Center(
+        title: Center(
             child: Text(
-          //'${AppLocalizations.of(context)?.translate("KSA")}',
           'Update Password',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16.sp,
+          ),
         )),
       ),
       body: SingleChildScrollView(
@@ -45,7 +47,6 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: CustomTextFiled(
-                  //'${AppLocalizations.of(context)?.translate("KSA")}',
                   hintText: 'Password',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -72,7 +73,6 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: CustomTextFiled(
-                  //'${AppLocalizations.of(context)?.translate("KSA")}',
                   hintText: 'Confirm Password',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -95,8 +95,8 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                   },
                 ),
               ),
-              const SizedBox(
-                height: 350,
+              SizedBox(
+                height: 350.h,
               ),
               InkWell(
                 focusNode: buttonUpdatePasswordFocus,
@@ -108,15 +108,14 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: const Color(0xffef5a2e),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      //'${AppLocalizations.of(context)?.translate("KSA")}',
                       'Next',
                       style: TextStyle(
                         height: 1,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                       ),
                     ),
                   ),

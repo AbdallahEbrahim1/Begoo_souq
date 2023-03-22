@@ -50,7 +50,7 @@ class _CategoriesViewState extends State<CategoriesView> {
           InkWell(
             onTap: () {},
             child: Image.asset(
-              'assets/images/noun_cart_1533491.png',
+              'assets/images/noun_cart.png',
               height: 10.h,
               width: 40.w,
             ),

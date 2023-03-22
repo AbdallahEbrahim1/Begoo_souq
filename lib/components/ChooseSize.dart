@@ -9,7 +9,7 @@ class ChooseSize extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  ChooseSize({
+  const ChooseSize({
     Key? key,
     required this.color,
     required this.onTap,
@@ -30,16 +30,16 @@ class ChooseSize extends StatelessWidget {
       //   });
       // },
       child: Container(
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: 5,
           right: 10,
         ),
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         height: 45,
         width: 65,
         decoration: BoxDecoration(
           color: isSelected ? MyColors.button : Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(5)),
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
           shape: BoxShape.rectangle,
           border: Border.all(
             color: Colors.grey,
@@ -47,7 +47,7 @@ class ChooseSize extends StatelessWidget {
         ),
         child: Container(
           // color: isSelected ? MyColors.button : Colors.white,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               // borderRadius: BorderRadius.all(Radius.circular(8)),
               // color: color,
               // shape: BoxShape.rectangle,

@@ -12,7 +12,7 @@ class CustomTextFiled extends StatelessWidget {
 
   // FocusNode nextFocus;
 
-  CustomTextFiled({
+  const CustomTextFiled({
     this.focusNode,
     this.onFieldSubmitted,
     this.validator,

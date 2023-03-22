@@ -22,10 +22,10 @@ dependencies:
   carousel_slider:
   flutter_launcher_icons:
 
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/logo.png"
+#flutter_icons:
+#  android: "launcher_icon"
+#  ios: true
+#  image_path: "assets/images/logo.png"
 
 
 
@@ -42,31 +42,28 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/2e398ce187b7ff530922f2bf823b0dba@2x.png
-    - assets/images/5c536367e69f61bc55b07b5e4a7ca187.png
-    - assets/images/7291a2e7b417e7a7271f456230ed58a0.png
-    - assets/images/a2156c2ba9ad3984e9fa215070825d4f.png
+    - assets/images/ads.png
     - assets/images/Apple.svg
-    - assets/images/de71a3def8f0467613db684feb7e0de6.png
+    - assets/images/des.png
     - assets/images/f3b63d0224f3e0812238f81d9aca2b03.png
+    - assets/images/fas.png
     - assets/images/fb.svg
-    - assets/images/florian-klauer-nptLmg6jqDo-unsplash.png
+    - assets/images/florian.png
     - assets/images/gmail.svg
-    - assets/images/Group 2.png
-    - assets/images/Group 2.svg
     - assets/images/hello-i-m-nik-F3E5Bkq0JUY-unsplash.png
     - assets/images/icon-2.svg
     - assets/images/icon.svg
     - assets/images/joshua-coleman-8V4y-XXT3MQ-unsplash.png
+    - assets/images/kuwait.png
     - assets/images/logo.png
-    - assets/images/logo.svg
+    - assets/images/logoSvg.svg
     - assets/images/magnifying-glass.png
     - assets/images/markus-spiske-yftrRWzcSPU-unsplash.png
     - assets/images/nguyen-bui-Zx97aKIDnv4-unsplash.png
     - assets/images/noun_appreciation_3117367.png
     - assets/images/noun_Bell_1497524.png
-    - assets/images/noun_cart_1533491.png
-    - assets/images/noun_cart_1533491.svg
+    - assets/images/noun_cart.png
+    - assets/images/noun_cart_svg.svg
     - assets/images/noun_Email_681592.svg
     - assets/images/noun_Heart_19653.png
     - assets/images/noun_Heart_196534.png
@@ -78,12 +75,14 @@ flutter:
     - assets/images/password.svg
     - assets/images/pexels-cottonbro-3661264.png
     - assets/images/pexels-cottonbro-3661353.png
-    - assets/images/pexels-miguel-á-padriñán-194094.png
-    - assets/images/pexels-pixabay-255514.png
-    - assets/images/pexels-pixabay-459957.png
-    - assets/images/rock-n-roll-monkey-LEPhZkQbUrk-unsplash.png
-    - assets/images/sandy-millar-nuS2GDpCDoI-unsplash.png
+    - assets/images/pexels-miguel.png
+    - assets/images/pexels-pixabay.png
+    - assets/images/pexels-pixabay4.png
+    - assets/images/qtar.png
+    - assets/images/roll-monkey.png
+    - assets/images/soudia.png
     - assets/images/splash.png
+    - assets/images/welcome.png
     - assets/lang/ar.json
     - assets/lang/en.json
   # To add custom fonts to your application, add a fonts section here,

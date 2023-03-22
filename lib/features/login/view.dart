@@ -1,19 +1,22 @@
 import 'package:begoo_souq/components/custom_text_field/custom_text_field.dart';
 import 'package:begoo_souq/components/navigate/navigate.dart';
-import 'package:begoo_souq/features/forget_password/forget_password_screen.dart';
-import 'package:begoo_souq/features/register/register_screen.dart';
+import 'package:begoo_souq/features/forget_password/view.dart';
+import 'package:begoo_souq/features/register/view.dart';
+import 'package:begoo_souq/res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+import '../pages/pages_screen.dart';
+
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginViewState createState() => _LoginViewState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginViewState extends State<LoginView> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -39,15 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 75.h,
-                  width: 130.w,
-                  child: ClipRRect(
-                    child: SvgPicture.asset(
-                      'assets/images/logo.svg',
-                      // AppAssets.APP_BAR_LOGO,
-                      fit: BoxFit.fitWidth,
-                    ),
-                    // 'assets/images/logo.svg',
+                  child: Image.asset(
+                    Res.logo,
+                    height: 75.h,
+                    width: 130.w,
+                    // AppAssets.APP_BAR_LOGO,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
                 SizedBox(
@@ -55,8 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Text(
                   'LOGIN',
-                  style: const TextStyle(
-                    fontSize: 30,
+                  style: TextStyle(
+                    fontSize: 30.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -64,9 +64,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 15.h,
                 ),
                 Text(
-                  'Please_login_to_your_account',
-                  style: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.normal),
+                  'Please login to your account.',
+                  style:
+                      TextStyle(fontSize: 15.sp, fontWeight: FontWeight.normal),
                 ),
                 SizedBox(
                   height: 25.h,
@@ -92,6 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (validator!.isEmpty) {
                         return "enter phone number";
                       }
+                      return null;
                     },
                   ),
                 ),
@@ -119,6 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (validator!.isEmpty) {
                         return " enter password";
                       }
+                      return null;
                     },
                   ),
                 ),
@@ -130,12 +132,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        navigateTo(context, const ForgetPasswordScreen());
+                        navigateTo(context, const ForgetPasswordView());
                       },
-                      child: Text(
-                        // '${AppLocalizations.of(context)?.translate("forget_password")}',
+                      child: const Text(
                         'Forgot Password?',
-                        style: const TextStyle(fontWeight: FontWeight.normal),
+                        style: TextStyle(fontWeight: FontWeight.normal),
                       ),
                     ),
                   ],
@@ -155,10 +156,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(10),
                       color: const Color(0xffef5a2e),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Login',
-                        style: const TextStyle(
+                        style: TextStyle(
                           height: 1,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -171,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 5.h,
                 ),
-                Text(
+                const Text(
                   // '${AppLocalizations.of(context)?.translate("or_login_with")}',
                   'or Login with',
                 ),
@@ -204,8 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 15.h,
                 ),
-                Text(
-                  // '${AppLocalizations.of(context)?.translate("Dont_have_an_account")}'
+                const Text(
                   'Don’t have an account?',
                 ),
                 SizedBox(
@@ -213,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 InkWell(
                   onTap: () {
-                    navigateTo(context, const RegisterScreen());
+                    navigateTo(context, const RegisterView());
                   },
                   child: Container(
                     height: 50.h,
@@ -224,11 +224,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.black,
                       ),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
-                        // '${AppLocalizations.of(context)?.translate("Create_Account")}',
                         'Create ACCOUNT',
-                        style: const TextStyle(
+                        style: TextStyle(
                           height: 1,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -242,11 +241,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 15.h,
                 ),
                 InkWell(
-                  // onTap: () {
-                  //   navigateTo(context,  );
-                  // },
-                  child: Text(
-                    // '${AppLocalizations.of(context)?.translate("Continue_as_a_guest")}',
+                  onTap: () {
+                    navigateTo(
+                        context,
+                        PagesScreen(
+                          selectedTabIndex: 0,
+                        ));
+                  },
+                  child: const Text(
                     'Continue as a guest',
                   ),
                 ),

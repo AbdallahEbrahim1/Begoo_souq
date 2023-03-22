@@ -25,7 +25,7 @@ class NewArrivalsScreen extends StatelessWidget {
         ),
         actions: [
           Image.asset(
-            'assets/images/noun_cart_1533491.png',
+            'assets/images/noun_cart.png',
             height: 10.h,
             width: 40.w,
           )
@@ -65,7 +65,7 @@ class NewArrivalsScreen extends StatelessWidget {
                       // width: 200,
                       width: MediaQuery.of(context).size.width,
                       child: Image.asset(
-                        'assets/images/florian-klauer-nptLmg6jqDo-unsplash.png',
+                        'assets/images/florian.png',
                         fit: BoxFit.cover,
                       ),
                     ),

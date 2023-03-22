@@ -18,7 +18,7 @@ class BuildRelatedProducts extends StatelessWidget {
           color: MyColors.black,
           fontWeight: FontWeight.bold,
         ),
-        Container(
+        SizedBox(
           height: 220,
           // width: MediaQuery.of(context).size.width,
           child: ListView.builder(
@@ -34,11 +34,11 @@ class BuildRelatedProducts extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         // height: 150,
                         width: 150,
                         child: Image.asset(
-                          Res.pexels_migueln_194094,
+                          Res.pexels_miguel,
                           fit: BoxFit.cover,
                         ),
                       ),

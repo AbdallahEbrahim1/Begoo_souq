@@ -43,14 +43,14 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
           fontWeight: FontWeight.bold,
         ),
         Container(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             // horizontal: 10.0,
             vertical: 10.0,
           ),
           child: secondHalf.isEmpty
               ? Text(
                   firstHalf,
-                  style: TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: Colors.grey),
                 )
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
                         children: <Widget>[
                           Text(
                             flag ? "show more" : "show less",
-                            style: new TextStyle(
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

@@ -324,11 +324,11 @@ class AddressScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xffef5a2e),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Proceed_to_Payment',
                     // '${AppLocalizations.of(context)?.translate("Proceed_to_Payment")}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       height: 1,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

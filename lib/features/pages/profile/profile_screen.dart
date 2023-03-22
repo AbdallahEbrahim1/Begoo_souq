@@ -362,11 +362,11 @@ class ProfileScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: const Color(0xffef5a2e),
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   // '${AppLocalizations.of(context)?.translate("Logout")}',
                   'Logout',
-                  style: const TextStyle(
+                  style: TextStyle(
                     height: 1,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

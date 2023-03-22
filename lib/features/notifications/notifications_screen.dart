@@ -36,7 +36,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         child: ListView.builder(
           itemCount: 20,
           itemBuilder: (context, index) {
-            return Container(
+            return SizedBox(
               height: 80.h,
               width: MediaQuery.of(context).size.width,
               child: Column(

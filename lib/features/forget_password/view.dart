@@ -1,16 +1,18 @@
 import 'package:begoo_souq/components/custom_text_field/custom_text_field.dart';
+import 'package:begoo_souq/components/navigate/navigate.dart';
+import 'package:begoo_souq/features/update_password/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
-  const ForgetPasswordScreen({Key? key}) : super(key: key);
+class ForgetPasswordView extends StatefulWidget {
+  const ForgetPasswordView({Key? key}) : super(key: key);
 
   @override
-  _ForgetPasswordScreenState createState() => _ForgetPasswordScreenState();
+  _ForgetPasswordViewState createState() => _ForgetPasswordViewState();
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   final TextEditingController _mobileController = TextEditingController();
 
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
@@ -69,7 +71,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Text(
-                    //'${AppLocalizations.of(context)?.translate("KSA")}',
                     'Please Enter your Mobile Number.',
                     style: TextStyle(
                       fontSize: 13,
@@ -111,7 +112,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               ),
               InkWell(
                 focusNode: buttonLoginFocus,
-                onTap: () {},
+                onTap: () {
+                  navigateTo(context, const UpdatePasswordView());
+                },
                 child: Container(
                   height: 50.h,
                   width: 260.w,
@@ -119,15 +122,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: const Color(0xffef5a2e),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      //'${AppLocalizations.of(context)?.translate("KSA")}',
                       'Next',
                       style: TextStyle(
                         height: 1,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                       ),
                     ),
                   ),
