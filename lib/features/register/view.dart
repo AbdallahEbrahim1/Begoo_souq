@@ -1,5 +1,5 @@
-import 'package:begoo_souq/components/custom_text_field/custom_text_field.dart';
-import 'package:begoo_souq/components/navigate/navigate.dart';
+import 'package:begoo_souq/components/custom_text_field.dart';
+import 'package:begoo_souq/components/navigate.dart';
 import 'package:begoo_souq/features/login/view.dart';
 import 'package:begoo_souq/res.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +29,9 @@ class _RegisterViewState extends State<RegisterView> {
   final confirmPasswordFocus = FocusNode();
   final buttonRegisterFocusNode = FocusNode();
 
-  int _groupValue = -1;
-  int value = 1;
+  int _groupValueGender = -1;
+  // int value = 1;
+  int? value;
 
   @override
   Widget build(BuildContext context) {
@@ -70,10 +71,10 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        // padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
                         child: Text(
                           'Gender',
                           style: TextStyle(
@@ -83,195 +84,221 @@ class _RegisterViewState extends State<RegisterView> {
                         ),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            width: 115.w,
-                            height: 52.h,
-                            child: RadioListTile(
-                              value: 0,
-                              groupValue: _groupValue,
-                              title: Text(
+                        children: [
+                          Row(
+                            children: [
+                              Radio(
+                                onChanged: (newValue) => setState(
+                                    () => _groupValueGender = newValue as int),
+                                groupValue: _groupValueGender,
+                                value: 1,
+                                activeColor: Colors.red,
+                              ),
+                              Text(
                                 'Male',
                                 style: TextStyle(
-                                  color: _groupValue == 0 ? Colors.red : null,
+                                  color: _groupValueGender == 1
+                                      ? Colors.red
+                                      : null,
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              onChanged: (newValue) =>
-                                  setState(() => _groupValue = newValue as int),
-                              activeColor: Colors.red,
-                              selected: false,
-                            ),
+                            ],
                           ),
                           SizedBox(
-                            width: 130.w,
-                            height: 52.h,
-                            child: RadioListTile(
-                              value: 1,
-                              groupValue: _groupValue,
-                              title: Text(
+                            width: 30.w,
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                onChanged: (newValue) => setState(
+                                    () => _groupValueGender = newValue as int),
+                                groupValue: _groupValueGender,
+                                value: 0,
+                                activeColor: Colors.red,
+                              ),
+                              Text(
                                 'Female',
                                 style: TextStyle(
-                                  color: _groupValue == 1 ? Colors.red : null,
+                                  color: _groupValueGender == 0
+                                      ? Colors.red
+                                      : null,
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              onChanged: (newValue) =>
-                                  setState(() => _groupValue = newValue as int),
-                              activeColor: Colors.red,
-                              selected: false,
-                            ),
+                            ],
                           ),
                         ],
                       ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.start,
+                      //   children: <Widget>[
+                      //     SizedBox(
+                      //       width: 115.w,
+                      //       height: 52.h,
+                      //       child: RadioListTile(
+                      //         value: 0,
+                      //         groupValue: _groupValue,
+                      //         title: Text(
+                      //           'Male',
+                      //           style: TextStyle(
+                      //             color: _groupValue == 0 ? Colors.red : null,
+                      //             fontSize: 15.sp,
+                      //             fontWeight: FontWeight.normal,
+                      //           ),
+                      //         ),
+                      //         onChanged: (newValue) =>
+                      //             setState(() => _groupValue = newValue as int),
+                      //         activeColor: Colors.red,
+                      //         selected: false,
+                      //       ),
+                      //     ),
+                      //     SizedBox(
+                      //       width: 130.w,
+                      //       height: 52.h,
+                      //       child: RadioListTile(
+                      //         value: 1,
+                      //         groupValue: _groupValue,
+                      //         title: Text(
+                      //           'Female',
+                      //           style: TextStyle(
+                      //             color: _groupValue == 1 ? Colors.red : null,
+                      //             fontSize: 15.sp,
+                      //             fontWeight: FontWeight.normal,
+                      //           ),
+                      //         ),
+                      //         onChanged: (newValue) =>
+                      //             setState(() => _groupValue = newValue as int),
+                      //         activeColor: Colors.red,
+                      //         selected: false,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  SizedBox(
-                    height: 50.h,
-                    //width: 300.w,
-                    child: CustomTextFiled(
-                      hintText: 'Name',
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: SvgPicture.asset(
-                          'assets/images/noun_User_1150157.svg',
-                          height: 15,
-                        ),
+                  CustomTextFiled(
+                    hintText: 'Name',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: SvgPicture.asset(
+                        'assets/images/noun_User_1150157.svg',
+                        height: 15,
                       ),
-                      focusNode: nameFocus,
-                      controller: _nameController,
-                      onFieldSubmitted: (v) {
-                        FocusScope.of(context).requestFocus(emailFocus);
-                      },
-                      validator: (validator) {
-                        if (validator!.isEmpty) {
-                          return "enter your name";
-                        }
-                        return null;
-                      },
                     ),
+                    focusNode: nameFocus,
+                    controller: _nameController,
+                    onFieldSubmitted: (v) {
+                      FocusScope.of(context).requestFocus(emailFocus);
+                    },
+                    validator: (validator) {
+                      if (validator!.isEmpty) {
+                        return "enter your name";
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 15.h,
                   ),
-                  SizedBox(
-                    height: 50.h,
-                    // width: 300.w,
-                    child: CustomTextFiled(
-                      hintText: 'Email Address',
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: SvgPicture.asset(
-                          'assets/images/noun_Email_681592.svg',
-                          height: 15,
-                        ),
+                  CustomTextFiled(
+                    hintText: 'Email Address',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: SvgPicture.asset(
+                        'assets/images/noun_Email_681592.svg',
+                        height: 15,
                       ),
-                      focusNode: emailFocus,
-                      controller: _emailController,
-                      onFieldSubmitted: (v) {
-                        FocusScope.of(context).requestFocus(mobileFocus);
-                      },
-                      validator: (validator) {
-                        if (validator!.isEmpty) {
-                          return "enter a valid email address";
-                        }
-                        return null;
-                      },
                     ),
+                    focusNode: emailFocus,
+                    controller: _emailController,
+                    onFieldSubmitted: (v) {
+                      FocusScope.of(context).requestFocus(mobileFocus);
+                    },
+                    validator: (validator) {
+                      if (validator!.isEmpty) {
+                        return "enter a valid email address";
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 15.h,
                   ),
-                  SizedBox(
-                    height: 50.h,
-                    // width: 300.w,
-                    child: CustomTextFiled(
-                      hintText: 'Mobile Number',
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: SvgPicture.asset(
-                          'assets/images/noun_Phone_1788724.svg',
-                          height: 15,
-                        ),
+                  CustomTextFiled(
+                    hintText: 'Mobile Number',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: SvgPicture.asset(
+                        'assets/images/noun_Phone_1788724.svg',
+                        height: 15,
                       ),
-                      focusNode: mobileFocus,
-                      controller: _mobileController,
-                      onFieldSubmitted: (v) {
-                        FocusScope.of(context).requestFocus(passwordFocus);
-                      },
-                      validator: (validator) {
-                        if (validator!.isEmpty) {
-                          return "enter a valid phone number";
-                        }
-                        return null;
-                      },
                     ),
+                    focusNode: mobileFocus,
+                    controller: _mobileController,
+                    onFieldSubmitted: (v) {
+                      FocusScope.of(context).requestFocus(passwordFocus);
+                    },
+                    validator: (validator) {
+                      if (validator!.isEmpty) {
+                        return "enter a valid phone number";
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 15.h,
                   ),
-                  SizedBox(
-                    height: 50.h,
-                    // width: 300.w,
-                    child: CustomTextFiled(
-                      // hintText:
-                      //     '${AppLocalizations.of(context)?.translate("password")}',
-                      hintText: 'Password',
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: SvgPicture.asset(
-                          'assets/images/password.svg',
-                          height: 15,
-                        ),
+                  CustomTextFiled(
+                    hintText: 'Password',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: SvgPicture.asset(
+                        'assets/images/password.svg',
+                        height: 15,
                       ),
-                      controller: _passwordController,
-                      focusNode: passwordFocus,
-                      onFieldSubmitted: (v) {
-                        FocusScope.of(context)
-                            .requestFocus(confirmPasswordFocus);
-                      },
-                      validator: (validator) {
-                        if (validator!.isEmpty) {
-                          return "password is too short";
-                        }
-                        return null;
-                      },
                     ),
+                    controller: _passwordController,
+                    focusNode: passwordFocus,
+                    onFieldSubmitted: (v) {
+                      FocusScope.of(context).requestFocus(confirmPasswordFocus);
+                    },
+                    validator: (validator) {
+                      if (validator!.isEmpty) {
+                        return "password is too short";
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 15.h,
                   ),
-                  SizedBox(
-                    height: 50.h,
-                    // width: 300.w,
-                    child: CustomTextFiled(
-                      hintText: 'Confirm Password',
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: SvgPicture.asset(
-                          'assets/images/password.svg',
-                          height: 15,
-                        ),
+                  CustomTextFiled(
+                    hintText: 'Confirm Password',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: SvgPicture.asset(
+                        'assets/images/password.svg',
+                        height: 15,
                       ),
-                      controller: _confirmPasswordController,
-                      focusNode: confirmPasswordFocus,
-                      onFieldSubmitted: (v) {
-                        FocusScope.of(context)
-                            .requestFocus(buttonRegisterFocusNode);
-                      },
-                      validator: (validator) {
-                        if (validator!.isEmpty) {
-                          return "enter password again ^-^";
-                        }
-                        return null;
-                      },
                     ),
+                    controller: _confirmPasswordController,
+                    focusNode: confirmPasswordFocus,
+                    onFieldSubmitted: (v) {
+                      FocusScope.of(context)
+                          .requestFocus(buttonRegisterFocusNode);
+                    },
+                    validator: (validator) {
+                      if (validator!.isEmpty) {
+                        return "enter password again ^-^";
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 15.h,
@@ -279,31 +306,26 @@ class _RegisterViewState extends State<RegisterView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      Radio(
+                        value: 0,
+                        groupValue: value,
+                        onChanged: (newValue) => setState(() {
+                          value = newValue as int;
+                        }),
+                        activeColor: Colors.red,
+                      ),
                       SizedBox(
-                        width: 300.w,
-                        height: 52.h,
-                        child: RadioListTile(
-                          value: 0,
-                          groupValue: value,
-                          title: Text(
-                            'I accept all Privacy Policies!',
-                            style: TextStyle(
-                              color: value == 0 ? Colors.red : null,
-                              textBaseline: TextBaseline.alphabetic,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                          onChanged: (newValue) => setState(() {
-                            value = newValue as int;
-                          }),
-                          activeColor: Colors.red,
-                          selected: false,
+                        width: 5.w,
+                      ),
+                      Text(
+                        'I accept all Privacy Policies!',
+                        style: TextStyle(
+                          color: value == 0 ? Colors.red : null,
+                          textBaseline: TextBaseline.alphabetic,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
-                      // SizedBox(
-                      //   width: 5.w,
-                      // ),
                     ],
                   ),
                   SizedBox(
@@ -384,18 +406,6 @@ class _RegisterViewState extends State<RegisterView> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget myRadioButton(
-      {required String title,
-      required int value,
-      required Function(int?)? onChanged}) {
-    return RadioListTile(
-      value: value,
-      groupValue: _groupValue,
-      onChanged: onChanged,
-      title: Text(title),
     );
   }
 }

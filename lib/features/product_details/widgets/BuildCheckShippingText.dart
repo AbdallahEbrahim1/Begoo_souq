@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tf_custom_widgets/widgets/DefaultButton.dart';
 import 'package:tf_custom_widgets/widgets/MyText.dart';
 
-import '../../../components/MyColors.dart';
+import '../../../components/my_colors.dart';
 
 class BuildCheckShippingText extends StatelessWidget {
   const BuildCheckShippingText({Key? key}) : super(key: key);

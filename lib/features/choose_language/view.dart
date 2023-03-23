@@ -1,9 +1,12 @@
+import 'package:begoo_souq/components/default_button.dart';
 import 'package:begoo_souq/features/choose_country/view.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../components/navigate/navigate.dart';
+import '../../components/navigate.dart';
 
 class ChooseLanguageView extends StatefulWidget {
   const ChooseLanguageView({Key? key}) : super(key: key);
@@ -40,66 +43,21 @@ class _ChooseLanguageViewState extends State<ChooseLanguageView> {
             SizedBox(
               height: 45.h,
             ),
-            const Text(
-              // '${AppLocalizations.of(context)?.translate("KSA")}',
-              'Choose Language',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            Text(
+              LocaleKeys.CHOOSE_COUNTRY.tr(),
+              // 'Choose Language',
+              style: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(
-              height: 25,
+            SizedBox(
+              height: 25.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
-                  // '${AppLocalizations.of(context)?.translate("KSA")}',
-                  'Please Choose your language !',
+                  LocaleKeys.Please_Choose_your_Country.tr(),
                   style: TextStyle(
-                    fontSize: 13,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 55,
-            ),
-            Column(
-              children: const [
-                Text(
-                  // '${AppLocalizations.of(context)?.translate("KSA")}',
-                  'Lorem Ipsum is simply dummy text of the',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  // '${AppLocalizations.of(context)?.translate("KSA")}',
-                  'printing and typesetting industry. Lorem',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  // '${AppLocalizations.of(context)?.translate("KSA")}',
-                  'Ipsum has been the industry\'s standard',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  // '${AppLocalizations.of(context)?.translate("KSA")}',
-                  'dummy text ever since the 1500s',
-                  style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 13.sp,
                   ),
                 ),
               ],
@@ -107,59 +65,71 @@ class _ChooseLanguageViewState extends State<ChooseLanguageView> {
             SizedBox(
               height: 55.h,
             ),
-            InkWell(
-              onTap: () {
-                navigateTo(context, const ChooseCountryView());
-              },
-              child: Container(
-                height: 50.h,
-                width: 260.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xffef5a2e),
-                ),
-                child: const Center(
-                  child: Text(
-                    // '${AppLocalizations.of(context)?.translate("KSA")}',
-
-                    'English',
-                    style: TextStyle(
-                      height: 1,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+            Column(
+              children: [
+                Text(
+                  'Lorem Ipsum is simply dummy text of the',
+                  style: TextStyle(
+                    fontSize: 15.sp,
                   ),
                 ),
-              ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(
+                  'printing and typesetting industry. Lorem',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                  ),
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(
+                  'Ipsum has been the industry\'s standard',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                  ),
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(
+                  'dummy text ever since the 1500s',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 55.h,
+            ),
+            DefaultButton(
+              onTap: () {
+                context.setLocale(const Locale('en'));
+                navigateTo(context, const ChooseCountryView());
+              },
+              title: 'English',
+              height: 50.h,
+              width: 260.w,
+              color: const Color(0xffef5a2e),
+              fontSize: 20.sp,
             ),
             SizedBox(
               height: 35.h,
             ),
-            InkWell(
+            DefaultButton(
               onTap: () {
+                context.setLocale(const Locale('ar'));
                 navigateTo(context, const ChooseCountryView());
               },
-              child: Container(
-                height: 50.h,
-                width: 260.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.black,
-                ),
-                child: const Center(
-                  child: Text(
-                    // '${AppLocalizations.of(context)?.translate("KSA")}',
-                    'العربية',
-                    style: TextStyle(
-                      height: 1,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ),
+              // title: LocaleKeys.password.tr(),
+              title: 'العربية',
+              height: 50.h,
+              width: 260.w,
+              color: Colors.black,
+              fontSize: 20.sp,
             ),
           ],
         ),

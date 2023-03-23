@@ -1,6 +1,8 @@
-import 'package:begoo_souq/components/navigate/navigate.dart';
+import 'package:begoo_souq/components/navigate.dart';
 import 'package:begoo_souq/features/login/view.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,7 +30,8 @@ class AdsView extends StatelessWidget {
                 navigateTo(context, const LoginView());
               },
               child: Text(
-                'SKIP',
+                LocaleKeys.SKIP.tr(),
+                // 'SKIP',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.sp,

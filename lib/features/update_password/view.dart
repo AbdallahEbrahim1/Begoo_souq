@@ -1,4 +1,10 @@
-import 'package:begoo_souq/components/custom_text_field/custom_text_field.dart';
+import 'package:begoo_souq/components/custom_text_field.dart';
+import 'package:begoo_souq/components/default_button.dart';
+import 'package:begoo_souq/components/my_dialog.dart';
+import 'package:begoo_souq/components/navigate.dart';
+import 'package:begoo_souq/features/login/view.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,14 +33,14 @@ class _UpdatePasswordViewState extends State<UpdatePasswordView> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white54,
-        title: Center(
-            child: Text(
+        centerTitle: true,
+        title: Text(
           'Update Password',
           style: TextStyle(
             color: Colors.black,
             fontSize: 16.sp,
           ),
-        )),
+        ),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -44,14 +50,13 @@ class _UpdatePasswordViewState extends State<UpdatePasswordView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w),
                 child: CustomTextFiled(
-                  hintText: 'Password',
+                  hintText: 'New Password',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: SvgPicture.asset(
-                      'assets/images/noun_Phone_1788724.svg',
+                      'assets/images/password.svg',
                       height: 15,
                     ),
                   ),
@@ -73,7 +78,7 @@ class _UpdatePasswordViewState extends State<UpdatePasswordView> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: CustomTextFiled(
-                  hintText: 'Confirm Password',
+                  hintText: 'Confirm New Password',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: SvgPicture.asset(
@@ -96,30 +101,53 @@ class _UpdatePasswordViewState extends State<UpdatePasswordView> {
                 ),
               ),
               SizedBox(
-                height: 350.h,
+                height: 400.h,
               ),
-              InkWell(
+              DefaultButton(
+                height: 50.h,
+                title: LocaleKeys.Update_Password.tr(),
+                fontSize: 20.sp,
+                color: const Color(0xffef5a2e),
                 focusNode: buttonUpdatePasswordFocus,
-                onTap: () {},
-                child: Container(
-                  height: 50.h,
-                  width: 340.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xffef5a2e),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Next',
-                      style: TextStyle(
-                        height: 1,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.sp,
+                onTap: () {
+                  showMyDialog(
+                    context: context,
+                    actions: [
+                      DefaultButton(
+                        height: 42.h,
+                        width: 120.w,
+                        color: Colors.black,
+                        title: LocaleKeys.DONE.tr(),
+                        onTap: () {
+                          navigateTo(context, const LoginView());
+                        },
+                      ),
+                    ],
+                    title: 'Password Changed',
+                    content: SizedBox(
+                      height: 50.h,
+                      width: 300.w,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Your Password has been successfully',
+                            style: TextStyle(
+                              fontSize: 14.0.sp,
+                              color: const Color(0xff979797),
+                            ),
+                          ),
+                          Text(
+                            'updated!',
+                            style: TextStyle(
+                              fontSize: 14.0.sp,
+                              color: const Color(0xff979797),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ],
           ),

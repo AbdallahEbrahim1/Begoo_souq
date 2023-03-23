@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tf_custom_widgets/widgets/MyText.dart';
 
-import '../../../components/MyColors.dart';
+import '../../../components/my_colors.dart';
 
 class DescriptionTextWidget extends StatefulWidget {
   const DescriptionTextWidget({Key? key}) : super(key: key);

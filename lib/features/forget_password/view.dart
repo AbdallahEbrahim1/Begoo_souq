@@ -1,6 +1,11 @@
-import 'package:begoo_souq/components/custom_text_field/custom_text_field.dart';
-import 'package:begoo_souq/components/navigate/navigate.dart';
+import 'package:begoo_souq/components/custom_text_field.dart';
+import 'package:begoo_souq/components/default_button.dart';
+import 'package:begoo_souq/components/my_dialog.dart';
+import 'package:begoo_souq/components/navigate.dart';
 import 'package:begoo_souq/features/update_password/view.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
+import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,71 +32,57 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
         physics: const BouncingScrollPhysics(),
         child: Form(
           key: _key,
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 60,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 75,
-                    width: 130,
-                    child: ClipRRect(
-                      child: SvgPicture.asset(
-                        'assets/images/logo.svg',
-                        // AppAssets.APP_BAR_LOGO,
-                        fit: BoxFit.fill,
+          child: Padding(
+            padding: EdgeInsets.all(16.0.r),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 60,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 75,
+                      width: 130,
+                      child: ClipRRect(
+                        child: SvgPicture.asset(
+                          'assets/images/logoSvg.svg',
+                          // AppAssets.APP_BAR_LOGO,
+                          fit: BoxFit.fill,
+                        ),
+                        // 'assets/images/logo.svg',
                       ),
-                      // 'assets/images/logo.svg',
                     ),
+                  ],
+                ),
+                SizedBox(
+                  height: 45.h,
+                ),
+                Text(
+                  'Forgot Password',
+                  style:
+                      TextStyle(fontSize: 32.sp, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 55.h,
+                ),
+                Text(
+                  'Please Enter your Mobile Number.',
+                  style: TextStyle(
+                    fontSize: 13.sp,
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 45,
-              ),
-              Row(
-                children: const [
-                  SizedBox(
-                    width: 80,
-                  ),
-                  Text(
-                    //'${AppLocalizations.of(context)?.translate("KSA")}',
-                    'Forgot Password',
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 55,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    'Please Enter your Mobile Number.',
-                    style: TextStyle(
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              SizedBox(
-                height: 50.h,
-                width: 260.w,
-                child: CustomTextFiled(
-                  //'${AppLocalizations.of(context)?.translate("KSA")}',
-                  hintText: 'Mobile Number',
+                ),
+                SizedBox(
+                  height: 25.h,
+                ),
+                CustomTextFiled(
+                  hintText: LocaleKeys.mobile_number.tr(),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: SvgPicture.asset(
-                      'assets/images/noun_Phone_1788724.svg',
-                      height: 15,
+                      Res.noun_Phone_1788724,
+                      height: 15.h,
                     ),
                   ),
                   focusNode: mobileFocus,
@@ -106,36 +97,70 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                     return null;
                   },
                 ),
-              ),
-              const SizedBox(
-                height: 55,
-              ),
-              InkWell(
-                focusNode: buttonLoginFocus,
-                onTap: () {
-                  navigateTo(context, const UpdatePasswordView());
-                },
-                child: Container(
-                  height: 50.h,
-                  width: 260.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xffef5a2e),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Next',
-                      style: TextStyle(
-                        height: 1,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.sp,
-                      ),
-                    ),
-                  ),
+                SizedBox(
+                  height: 55.h,
                 ),
-              ),
-            ],
+                DefaultButton(
+                  onTap: () {
+                    showMyDialog(
+                      context: context,
+                      actions: [
+                        DefaultButton(
+                          height: 42.h,
+                          width: 120.w,
+                          color: Colors.black,
+                          title: LocaleKeys.DONE.tr(),
+                          onTap: () {
+                            navigateTo(context, const UpdatePasswordView());
+                          },
+                        ),
+                      ],
+                      content: SizedBox(
+                        height: 200.h,
+                        width: 300.w,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 26.h,
+                            ),
+                            SvgPicture.asset(
+                              Res.noun_like_939692,
+                              // AppAssets.APP_BAR_LOGO,
+                              height: 44.h,
+                              width: 46.w,
+                              // fit: BoxFit.fill,
+                            ),
+                            SizedBox(
+                              height: 26.h,
+                            ),
+                            Text(
+                              'We Send a password reset link on your ',
+                              style: TextStyle(
+                                fontSize: 14.0.sp,
+                                color: const Color(0xff979797),
+                              ),
+                            ),
+                            Text(
+                              'Mobile Number ! Please check.',
+                              style: TextStyle(
+                                fontSize: 14.0.sp,
+                                color: const Color(0xff979797),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      title: 'Password Send',
+                    );
+                  },
+                  title: LocaleKeys.Next.tr(),
+                  height: 50.h,
+                  color: const Color(0xffef5a2e),
+                  fontSize: 20.sp,
+                  focusNode: buttonLoginFocus,
+                ),
+              ],
+            ),
           ),
         ),
       ),

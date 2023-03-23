@@ -1,4 +1,4 @@
-import 'package:begoo_souq/components/MyColors.dart';
+import 'package:begoo_souq/components/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:tf_custom_widgets/widgets/MyText.dart';
 

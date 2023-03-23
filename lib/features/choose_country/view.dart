@@ -1,6 +1,8 @@
-import 'package:begoo_souq/components/navigate/navigate.dart';
+import 'package:begoo_souq/components/navigate.dart';
 import 'package:begoo_souq/features/ads/view.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,8 +35,7 @@ class _ChooseCountryViewState extends State<ChooseCountryView> {
               height: 40.h,
             ),
             Text(
-              // '${AppLocalizations.of(context)?.translate("Choose_Country")}',
-              'Choose Country',
+              LocaleKeys.CHOOSE_COUNTRY.tr(),
               style: TextStyle(
                 fontSize: 32.sp,
                 fontWeight: FontWeight.bold,
@@ -44,7 +45,7 @@ class _ChooseCountryViewState extends State<ChooseCountryView> {
               height: 25.h,
             ),
             Text(
-              'Please Choose your Country !',
+              LocaleKeys.Please_Choose_your_Country.tr(),
               style: TextStyle(
                 fontSize: 13.sp,
               ),

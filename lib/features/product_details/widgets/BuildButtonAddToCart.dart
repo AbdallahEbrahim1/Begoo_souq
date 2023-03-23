@@ -1,4 +1,4 @@
-import 'package:begoo_souq/components/navigate/navigate.dart';
+import 'package:begoo_souq/components/navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:tf_custom_widgets/widgets/DefaultButton.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tf_custom_widgets/widgets/MyText.dart';
 
-import '../../../components/MyColors.dart';
+import '../../../components/my_colors.dart';
 import '../../../res.dart';
 
 class BuildHighlightsPoints extends StatelessWidget {

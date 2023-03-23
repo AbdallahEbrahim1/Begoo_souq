@@ -1,4 +1,7 @@
+import 'package:begoo_souq/components/custom_appBar.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tf_custom_widgets/tf_custom_widgets.dart';
@@ -16,23 +19,10 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(
-            Icons.arrow_back,
-            color: Color(0xff505050),
-          ),
-        ),
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          'cart',
-          style: TextStyle(color: const Color(0xff505050), fontSize: 16.sp),
-        ),
-        backgroundColor: const Color(0xffFAFAFA),
+      appBar: CustomAppBar(
+        isTitle: true,
+        isLeading: true,
+        title: LocaleKeys.CART.tr(),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
