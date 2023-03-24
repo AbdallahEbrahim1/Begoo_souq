@@ -8,8 +8,8 @@ class BuildDropdownBrand extends StatefulWidget {
 }
 
 class _BuildDropdownBrandState extends State<BuildDropdownBrand> {
-  RangeValues currentRangeValuesAge = const RangeValues(40, 400);
-  RangeValues currentRangeValuesPrice = const RangeValues(40, 400);
+  // RangeValues currentRangeValuesAge = const RangeValues(40, 400);
+  // RangeValues currentRangeValuesPrice = const RangeValues(40, 400);
 
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(child: Text("Brand"), value: "Brand"),

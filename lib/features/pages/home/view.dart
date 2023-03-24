@@ -1,5 +1,6 @@
 import 'package:begoo_souq/components/custom_appBar.dart';
-import 'package:begoo_souq/components/navigate.dart';
+import 'package:begoo_souq/components/custom_text_field.dart';
+import 'package:begoo_souq/components/helper_methods.dart';
 import 'package:begoo_souq/features/cart/view.dart';
 import 'package:begoo_souq/features/flash_deals/view.dart';
 import 'package:begoo_souq/features/new_arrivals/view.dart';
@@ -7,7 +8,10 @@ import 'package:begoo_souq/features/notifications/view.dart';
 import 'package:begoo_souq/features/pages/view.dart';
 import 'package:begoo_souq/features/product_details/view.dart';
 import 'package:begoo_souq/features/recommended_products/view.dart';
+import 'package:begoo_souq/features/search/view.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -84,28 +88,38 @@ class _HomeViewState extends State<HomeView> {
         children: [
           Card(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0.r),
+              borderRadius: BorderRadius.circular(10.0.r),
             ),
-            child: Container(
-              height: 45.h,
-              decoration: BoxDecoration(
-                color: HexColor('#FFFFFF'),
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  //'${AppLocalizations.of(context)?.translate("KSA")}',
-                  hintText: 'Search',
-                  suffixIcon: Image.asset('assets/images/magnifying-glass.png'),
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 15.h,
-                    horizontal: 40.w,
-                  ),
-                ),
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: CustomTextFiled(
+                isSearch: true,
+                isEnabled: false,
+                hintText: LocaleKeys.SEARCH.tr(),
+                suffixIcon: Image.asset(Res.magnifying_glass),
+                onTap: () {
+                  navigateTo(context, const SearchView());
+                },
               ),
             ),
+            // Container(
+            //   height: 45.h,
+            //   decoration: BoxDecoration(
+            //     color: HexColor('#FFFFFF'),
+            //     borderRadius: BorderRadius.circular(10.r),
+            //   ),
+            //   child: TextField(
+            //     decoration: InputDecoration(
+            //       enabledBorder: InputBorder.none,
+            //       focusedBorder: InputBorder.none,
+            //       hintText: 'Search',
+            //       contentPadding: EdgeInsets.symmetric(
+            //         vertical: 15.h,
+            //         horizontal: 40.w,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ),
           SizedBox(
             height: 200.h,

@@ -16,18 +16,37 @@ dependencies:
   easy_localization:
   hexcolor:
   shared_preferences:
-  animated_splash_screen:
-  cupertino_icons: ^1.0.5
+  cupertino_icons:
   tf_custom_widgets:
   carousel_slider:
   flutter_launcher_icons:
+  flutter_native_splash:
+  dio:
+  flutter_bloc:
+  kiwi:
+  lottie:
+  shimmer:
+  animate_do:
+  badges:
+  image_picker:
+  cached_network_image:
+  share_plus:
+  sign_in_with_apple:
+  flutter_secure_storage:
+  flutter_facebook_auth:
+  google_sign_in:
 
-#flutter_icons:
-#  android: "launcher_icon"
-#  ios: true
-#  image_path: "assets/images/logo.png"
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
 
-
+flutter_native_splash:
+  image: assets/images/splash.png
+  color: "#FAFAFA"
+  fill: true
+  android: true
+  ios: true
 
 
 dev_dependencies:
@@ -35,7 +54,7 @@ dev_dependencies:
     sdk: flutter
 
 
-  flutter_lints: ^1.0.0
+  flutter_lints:
 
 flutter:
 

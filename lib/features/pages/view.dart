@@ -1,11 +1,8 @@
+import 'package:begoo_souq/features/pages/categories/view.dart';
+import 'package:begoo_souq/features/pages/home/view.dart';
 import 'package:begoo_souq/features/pages/our_stars/view.dart';
-import 'package:begoo_souq/features/pages/profile/view.dart';
 import 'package:begoo_souq/features/pages/settings/view.dart';
 import 'package:flutter/material.dart';
-
-import 'categories/view.dart';
-import 'favorites/view.dart';
-import 'home/view.dart';
 
 class PagesView extends StatefulWidget {
   int selectedTabIndex;
@@ -27,9 +24,9 @@ class _PagesViewState extends State<PagesView> {
 
   static const List _pages = [
     HomeView(),
-    FavoritesView(),
+    // FavoritesView(),
     OurStarsView(),
-    ProfileView(),
+    // ProfileView(),
     SettingsScreen(),
     CategoriesView(),
   ];
@@ -111,17 +108,17 @@ class _PagesViewState extends State<PagesView> {
             // icon: Icon(Icons.home, color: Colors.white),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-            ),
-            //backgroundColor: Colors.white,
-            // icon: Image.asset('assets/images/noun_Heart_196534.png'),
-            //   icon: Icon(Icons.favorite, color: Colors.white),
-            // label: '${AppLocalizations.of(context)?.translate("Favorites")}',
-
-            label: 'Favorites',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(
+          //     Icons.favorite,
+          //   ),
+          //   //backgroundColor: Colors.white,
+          //   // icon: Image.asset('assets/images/noun_Heart_196534.png'),
+          //   //   icon: Icon(Icons.favorite, color: Colors.white),
+          //   // label: '${AppLocalizations.of(context)?.translate("Favorites")}',
+          //
+          //   label: 'Favorites',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.star,
@@ -132,12 +129,12 @@ class _PagesViewState extends State<PagesView> {
 
             label: 'O Stars',
           ),
-          BottomNavigationBarItem(
-            // icon: Image.asset('assets/images/'),
-            icon: Icon(Icons.account_circle_outlined),
-            // label: '${AppLocalizations.of(context)?.translate("MY_ACCOUNT")}',
-            label: 'Account',
-          ),
+          // BottomNavigationBarItem(
+          //   // icon: Image.asset('assets/images/'),
+          //   icon: Icon(Icons.account_circle_outlined),
+          //   // label: '${AppLocalizations.of(context)?.translate("MY_ACCOUNT")}',
+          //   label: 'Account',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.settings,

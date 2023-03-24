@@ -1,5 +1,5 @@
 import 'package:begoo_souq/components/custom_appBar.dart';
-import 'package:begoo_souq/components/navigate.dart';
+import 'package:begoo_souq/components/helper_methods.dart';
 import 'package:begoo_souq/features/cart/view.dart';
 import 'package:begoo_souq/res.dart';
 import 'package:flutter/material.dart';

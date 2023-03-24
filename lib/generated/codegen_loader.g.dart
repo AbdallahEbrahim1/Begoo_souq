@@ -15,6 +15,7 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en = {
+  "lang": "en",
   "OK": "Ok",
   "RETRY": "Retry",
   "CATEGORIES": "Categories",
@@ -264,6 +265,7 @@ class CodegenLoader extends AssetLoader{
   "PHONE_VALIDATION": "The phone number must not be less than 7 digits"
 };
 static const Map<String,dynamic> ar = {
+  "lang": "ar",
   "OK": "تم",
   "RETRY": "إعادة المحاولة",
   "CATEGORIES": "اﻷقسام",

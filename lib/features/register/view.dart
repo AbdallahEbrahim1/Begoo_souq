@@ -1,10 +1,17 @@
 import 'package:begoo_souq/components/custom_text_field.dart';
-import 'package:begoo_souq/components/navigate.dart';
+import 'package:begoo_souq/components/default_button.dart';
+import 'package:begoo_souq/components/helper_methods.dart';
 import 'package:begoo_souq/features/login/view.dart';
+import 'package:begoo_souq/features/pages/view.dart';
+import 'package:begoo_souq/features/register/bloc/bloc.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kiwi/kiwi.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -14,24 +21,7 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _mobileController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
-
-  final _key = GlobalKey<FormState>();
-
-  final nameFocus = FocusNode();
-  final emailFocus = FocusNode();
-  final mobileFocus = FocusNode();
-  final passwordFocus = FocusNode();
-  final confirmPasswordFocus = FocusNode();
-  final buttonRegisterFocusNode = FocusNode();
-
-  int _groupValueGender = -1;
-  // int value = 1;
-  int? value;
+  final _bloc = KiwiContainer().resolve<RegisterBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +31,7 @@ class _RegisterViewState extends State<RegisterView> {
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Form(
-            key: _key,
+            key: _bloc.key,
             child: Padding(
               padding: const EdgeInsets.only(
                 top: 70,
@@ -88,16 +78,16 @@ class _RegisterViewState extends State<RegisterView> {
                           Row(
                             children: [
                               Radio(
-                                onChanged: (newValue) => setState(
-                                    () => _groupValueGender = newValue as int),
-                                groupValue: _groupValueGender,
+                                onChanged: (newValue) => setState(() =>
+                                    _bloc.groupValueGender = newValue as int),
+                                groupValue: _bloc.groupValueGender,
                                 value: 1,
                                 activeColor: Colors.red,
                               ),
                               Text(
                                 'Male',
                                 style: TextStyle(
-                                  color: _groupValueGender == 1
+                                  color: _bloc.groupValueGender == 1
                                       ? Colors.red
                                       : null,
                                   fontSize: 15.sp,
@@ -112,16 +102,16 @@ class _RegisterViewState extends State<RegisterView> {
                           Row(
                             children: [
                               Radio(
-                                onChanged: (newValue) => setState(
-                                    () => _groupValueGender = newValue as int),
-                                groupValue: _groupValueGender,
+                                onChanged: (newValue) => setState(() =>
+                                    _bloc.groupValueGender = newValue as int),
+                                groupValue: _bloc.groupValueGender,
                                 value: 0,
                                 activeColor: Colors.red,
                               ),
                               Text(
                                 'Female',
                                 style: TextStyle(
-                                  color: _groupValueGender == 0
+                                  color: _bloc.groupValueGender == 0
                                       ? Colors.red
                                       : null,
                                   fontSize: 15.sp,
@@ -191,10 +181,10 @@ class _RegisterViewState extends State<RegisterView> {
                         height: 15,
                       ),
                     ),
-                    focusNode: nameFocus,
-                    controller: _nameController,
+                    focusNode: _bloc.nameFocus,
+                    controller: _bloc.nameController,
                     onFieldSubmitted: (v) {
-                      FocusScope.of(context).requestFocus(emailFocus);
+                      FocusScope.of(context).requestFocus(_bloc.emailFocus);
                     },
                     validator: (validator) {
                       if (validator!.isEmpty) {
@@ -215,10 +205,10 @@ class _RegisterViewState extends State<RegisterView> {
                         height: 15,
                       ),
                     ),
-                    focusNode: emailFocus,
-                    controller: _emailController,
+                    focusNode: _bloc.emailFocus,
+                    controller: _bloc.emailController,
                     onFieldSubmitted: (v) {
-                      FocusScope.of(context).requestFocus(mobileFocus);
+                      FocusScope.of(context).requestFocus(_bloc.mobileFocus);
                     },
                     validator: (validator) {
                       if (validator!.isEmpty) {
@@ -239,10 +229,10 @@ class _RegisterViewState extends State<RegisterView> {
                         height: 15,
                       ),
                     ),
-                    focusNode: mobileFocus,
-                    controller: _mobileController,
+                    focusNode: _bloc.mobileFocus,
+                    controller: _bloc.mobileController,
                     onFieldSubmitted: (v) {
-                      FocusScope.of(context).requestFocus(passwordFocus);
+                      FocusScope.of(context).requestFocus(_bloc.passwordFocus);
                     },
                     validator: (validator) {
                       if (validator!.isEmpty) {
@@ -263,10 +253,11 @@ class _RegisterViewState extends State<RegisterView> {
                         height: 15,
                       ),
                     ),
-                    controller: _passwordController,
-                    focusNode: passwordFocus,
+                    controller: _bloc.passwordController,
+                    focusNode: _bloc.passwordFocus,
                     onFieldSubmitted: (v) {
-                      FocusScope.of(context).requestFocus(confirmPasswordFocus);
+                      FocusScope.of(context)
+                          .requestFocus(_bloc.confirmPasswordFocus);
                     },
                     validator: (validator) {
                       if (validator!.isEmpty) {
@@ -287,11 +278,11 @@ class _RegisterViewState extends State<RegisterView> {
                         height: 15,
                       ),
                     ),
-                    controller: _confirmPasswordController,
-                    focusNode: confirmPasswordFocus,
+                    controller: _bloc.confirmPasswordController,
+                    focusNode: _bloc.confirmPasswordFocus,
                     onFieldSubmitted: (v) {
                       FocusScope.of(context)
-                          .requestFocus(buttonRegisterFocusNode);
+                          .requestFocus(_bloc.buttonRegisterFocusNode);
                     },
                     validator: (validator) {
                       if (validator!.isEmpty) {
@@ -308,9 +299,9 @@ class _RegisterViewState extends State<RegisterView> {
                     children: [
                       Radio(
                         value: 0,
-                        groupValue: value,
+                        groupValue: _bloc.value,
                         onChanged: (newValue) => setState(() {
-                          value = newValue as int;
+                          _bloc.value = newValue as int;
                         }),
                         activeColor: Colors.red,
                       ),
@@ -320,7 +311,7 @@ class _RegisterViewState extends State<RegisterView> {
                       Text(
                         'I accept all Privacy Policies!',
                         style: TextStyle(
-                          color: value == 0 ? Colors.red : null,
+                          color: _bloc.value == 0 ? Colors.red : null,
                           textBaseline: TextBaseline.alphabetic,
                           fontSize: 15,
                           fontWeight: FontWeight.normal,
@@ -331,71 +322,66 @@ class _RegisterViewState extends State<RegisterView> {
                   SizedBox(
                     height: 15.h,
                   ),
-                  InkWell(
-                    focusNode: buttonRegisterFocusNode,
-                    onTap: () {
-                      // if (_key.currentState!.validate()) {
-                      //   // return print('ll');
-                      //   navigateTo(context, const RegisterScreen());
-                      // }
+                  BlocConsumer(
+                    bloc: _bloc,
+                    listener: (context, state) {
+                      if (state is RegisterSuccessState) {
+                        showToast(
+                            msg: state.msg,
+                            context: context,
+                            type: MessageType.success);
+                        navigateTo(
+                            context,
+                            PagesView(
+                              selectedTabIndex: 0,
+                            ));
+                      } else if (state is RegisterFailedState) {
+                        showToast(
+                            msg: state.msg,
+                            context: context,
+                            type: MessageType.fail);
+                      }
                     },
-                    child: Container(
-                      height: 50.h,
-                      // width: 300.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                    builder: (context, state) {
+                      return DefaultButton(
+                        isLoading: state is RegisterLoadingState,
+                        focusNode: _bloc.buttonRegisterFocusNode,
+                        onTap: () {
+                          if (_bloc.key.currentState!.validate()) {
+                            _bloc.add(RegisterEvent());
+                          }
+                        },
+                        title: LocaleKeys.Register.tr(),
+                        height: 50.h,
                         color: const Color(0xffef5a2e),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                            height: 1,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
+                        fontSize: 20.sp,
+                      );
+                    },
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    LocaleKeys.Already_have_an_account.tr(),
+                    style: TextStyle(
+                      color: const Color(0xff1A1A1A),
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Text(
-                      'Already have an account?',
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  InkWell(
+                  DefaultButton(
+                    focusNode: _bloc.buttonRegisterFocusNode,
                     onTap: () {
                       navigateTo(context, const LoginView());
                     },
-                    child: Container(
-                      height: 50.h,
-                      //  width: 300.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.black)),
-                      child: Center(
-                        child: Text(
-                          'Signin',
-                          style: TextStyle(
-                            height: 1,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.sp,
-                          ),
-                        ),
-                      ),
-                    ),
+                    title: LocaleKeys.Signin.tr(),
+                    height: 50.h,
+                    fontSize: 18.sp,
+                    borderColor: Colors.black,
+                    textColor: Colors.black,
                   ),
                   SizedBox(
                     height: 5.h,

@@ -1,6 +1,9 @@
-import 'package:begoo_souq/components/navigate.dart';
+import 'package:begoo_souq/components/helper_methods.dart';
+import 'package:begoo_souq/features/about_us/view.dart';
 import 'package:begoo_souq/features/contact_us/view.dart';
 import 'package:begoo_souq/features/notifications/view.dart';
+import 'package:begoo_souq/features/profile/view.dart';
+import 'package:begoo_souq/features/terms_conditions/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -31,7 +34,9 @@ class SettingsScreen extends StatelessWidget {
             InkWell(
               highlightColor: const Color(0xffEF5A2E),
               borderRadius: BorderRadius.circular(10),
-              onTap: () {},
+              onTap: () {
+                navigateTo(context, const ProfileView());
+              },
               child: Container(
                 height: 50,
                 //width: 90,
@@ -50,7 +55,6 @@ class SettingsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        // '${AppLocalizations.of(context)?.translate("MY_ACCOUNT")}',
                         'My Account',
                         style: TextStyle(
                           color: HexColor('#1A1A1A'),
@@ -188,7 +192,6 @@ class SettingsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        // '${AppLocalizations.of(context)?.translate("CHOOSE_COUNTRY")}',
                         'Choose Country',
                         style: TextStyle(
                           color: HexColor('#1A1A1A'),
@@ -215,7 +218,7 @@ class SettingsScreen extends StatelessWidget {
               highlightColor: HexColor('#EF5A2E'),
               borderRadius: BorderRadius.circular(10),
               onTap: () {
-                // navigateTo(context, const ());
+                navigateTo(context, const AboutUsView());
               },
               child: Container(
                 height: 50,
@@ -235,7 +238,6 @@ class SettingsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        // '${AppLocalizations.of(context)?.translate("ABOUT_BEGO")}',
                         'About Bego',
                         style: TextStyle(
                           color: HexColor('#1A1A1A'),
@@ -262,7 +264,7 @@ class SettingsScreen extends StatelessWidget {
               highlightColor: HexColor('#EF5A2E'),
               borderRadius: BorderRadius.circular(10),
               onTap: () {
-                // navigateTo(context, const ());
+                navigateTo(context, const TermsConditionsScreen());
               },
               child: Container(
                 height: 50,

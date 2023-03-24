@@ -1,8 +1,5 @@
 import 'package:begoo_souq/components/custom_text_field.dart';
 import 'package:begoo_souq/components/default_button.dart';
-import 'package:begoo_souq/components/my_dialog.dart';
-import 'package:begoo_souq/components/navigate.dart';
-import 'package:begoo_souq/features/login/view.dart';
 import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +17,7 @@ class _UpdatePasswordViewState extends State<UpdatePasswordView> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
-
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
-
   final passwordFocus = FocusNode();
   final confirmPasswordFocus = FocusNode();
   final buttonUpdatePasswordFocus = FocusNode();
@@ -110,43 +105,43 @@ class _UpdatePasswordViewState extends State<UpdatePasswordView> {
                 color: const Color(0xffef5a2e),
                 focusNode: buttonUpdatePasswordFocus,
                 onTap: () {
-                  showMyDialog(
-                    context: context,
-                    actions: [
-                      DefaultButton(
-                        height: 42.h,
-                        width: 120.w,
-                        color: Colors.black,
-                        title: LocaleKeys.DONE.tr(),
-                        onTap: () {
-                          navigateTo(context, const LoginView());
-                        },
-                      ),
-                    ],
-                    title: 'Password Changed',
-                    content: SizedBox(
-                      height: 50.h,
-                      width: 300.w,
-                      child: Column(
-                        children: [
-                          Text(
-                            'Your Password has been successfully',
-                            style: TextStyle(
-                              fontSize: 14.0.sp,
-                              color: const Color(0xff979797),
-                            ),
-                          ),
-                          Text(
-                            'updated!',
-                            style: TextStyle(
-                              fontSize: 14.0.sp,
-                              color: const Color(0xff979797),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  // showMyDialog(
+                  //   context: context,
+                  //   actions: [
+                  //     DefaultButton(
+                  //       height: 42.h,
+                  //       width: 120.w,
+                  //       color: Colors.black,
+                  //       title: LocaleKeys.DONE.tr(),
+                  //       onTap: () {
+                  //         navigateTo(context, const LoginView());
+                  //       },
+                  //     ),
+                  //   ],
+                  //   title: 'Password Changed',
+                  //   content: SizedBox(
+                  //     height: 50.h,
+                  //     width: 300.w,
+                  //     child: Column(
+                  //       children: [
+                  //         Text(
+                  //           'Your Password has been successfully',
+                  //           style: TextStyle(
+                  //             fontSize: 14.0.sp,
+                  //             color: const Color(0xff979797),
+                  //           ),
+                  //         ),
+                  //         Text(
+                  //           'updated!',
+                  //           style: TextStyle(
+                  //             fontSize: 14.0.sp,
+                  //             color: const Color(0xff979797),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // );
                 },
               ),
             ],

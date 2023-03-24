@@ -1,8 +1,5 @@
 import 'package:begoo_souq/components/custom_text_field.dart';
 import 'package:begoo_souq/components/default_button.dart';
-import 'package:begoo_souq/components/my_dialog.dart';
-import 'package:begoo_souq/components/navigate.dart';
-import 'package:begoo_souq/features/update_password/view.dart';
 import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:begoo_souq/res.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -102,56 +99,56 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 ),
                 DefaultButton(
                   onTap: () {
-                    showMyDialog(
-                      context: context,
-                      actions: [
-                        DefaultButton(
-                          height: 42.h,
-                          width: 120.w,
-                          color: Colors.black,
-                          title: LocaleKeys.DONE.tr(),
-                          onTap: () {
-                            navigateTo(context, const UpdatePasswordView());
-                          },
-                        ),
-                      ],
-                      content: SizedBox(
-                        height: 200.h,
-                        width: 300.w,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 26.h,
-                            ),
-                            SvgPicture.asset(
-                              Res.noun_like_939692,
-                              // AppAssets.APP_BAR_LOGO,
-                              height: 44.h,
-                              width: 46.w,
-                              // fit: BoxFit.fill,
-                            ),
-                            SizedBox(
-                              height: 26.h,
-                            ),
-                            Text(
-                              'We Send a password reset link on your ',
-                              style: TextStyle(
-                                fontSize: 14.0.sp,
-                                color: const Color(0xff979797),
-                              ),
-                            ),
-                            Text(
-                              'Mobile Number ! Please check.',
-                              style: TextStyle(
-                                fontSize: 14.0.sp,
-                                color: const Color(0xff979797),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      title: 'Password Send',
-                    );
+                    // showMyDialog(
+                    //   context: context,
+                    //   actions: [
+                    //     DefaultButton(
+                    //       height: 42.h,
+                    //       width: 120.w,
+                    //       color: Colors.black,
+                    //       title: LocaleKeys.DONE.tr(),
+                    //       onTap: () {
+                    //         navigateTo(context, const UpdatePasswordView());
+                    //       },
+                    //     ),
+                    //   ],
+                    //   content: SizedBox(
+                    //     height: 200.h,
+                    //     width: 300.w,
+                    //     child: Column(
+                    //       children: [
+                    //         SizedBox(
+                    //           height: 26.h,
+                    //         ),
+                    //         SvgPicture.asset(
+                    //           Res.noun_like_939692,
+                    //           // AppAssets.APP_BAR_LOGO,
+                    //           height: 44.h,
+                    //           width: 46.w,
+                    //           // fit: BoxFit.fill,
+                    //         ),
+                    //         SizedBox(
+                    //           height: 26.h,
+                    //         ),
+                    //         Text(
+                    //           'We Send a password reset link on your ',
+                    //           style: TextStyle(
+                    //             fontSize: 14.0.sp,
+                    //             color: const Color(0xff979797),
+                    //           ),
+                    //         ),
+                    //         Text(
+                    //           'Mobile Number ! Please check.',
+                    //           style: TextStyle(
+                    //             fontSize: 14.0.sp,
+                    //             color: const Color(0xff979797),
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    //   title: 'Password Send',
+                    // );
                   },
                   title: LocaleKeys.Next.tr(),
                   height: 50.h,

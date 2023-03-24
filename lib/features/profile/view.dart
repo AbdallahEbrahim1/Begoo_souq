@@ -1,4 +1,4 @@
-import 'package:begoo_souq/components/navigate.dart';
+import 'package:begoo_souq/components/helper_methods.dart';
 import 'package:begoo_souq/features/edit_profile/view.dart';
 import 'package:begoo_souq/features/login/view.dart';
 import 'package:flutter/material.dart';

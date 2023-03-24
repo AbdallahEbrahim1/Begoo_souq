@@ -1,10 +1,15 @@
-import 'package:begoo_souq/components/navigate.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:begoo_souq/components/helper_methods.dart';
 import 'package:begoo_souq/features/ads/view.dart';
+import 'package:begoo_souq/features/choose_country/bloc/bloc.dart';
 import 'package:begoo_souq/generated/locale_keys.g.dart';
+import 'package:begoo_souq/network/local/cache_helper.dart';
 import 'package:begoo_souq/res.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kiwi/kiwi.dart';
 
 class ChooseCountryView extends StatefulWidget {
   const ChooseCountryView({Key? key}) : super(key: key);
@@ -14,6 +19,13 @@ class ChooseCountryView extends StatefulWidget {
 }
 
 class _ChooseCountryViewState extends State<ChooseCountryView> {
+  final _bloc = KiwiContainer().resolve<CurrenciesBloc>();
+  @override
+  void initState() {
+    _bloc.add(GetCurrenciesEvent());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,55 +65,66 @@ class _ChooseCountryViewState extends State<ChooseCountryView> {
             SizedBox(
               height: 25.h,
             ),
-            Expanded(
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  //print(currenciesSnapshot.data?.data![index].name);
-                  return InkWell(
-                    onTap: () {
-                      navigateTo(context, const AdsView());
-                    },
-                    child: Card(
-                      elevation: 5,
-                      shadowColor: Colors.white54,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0.r),
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              Res.kuwait,
-                              height: 40,
-                              width: 40,
-                            ),
-                            SizedBox(
-                              width: 27.w,
-                            ),
-                            Text(
-                              'Kuwait',
-                              style: TextStyle(
-                                fontSize: 16.sp,
+            BlocBuilder(
+              bloc: _bloc,
+              builder: (context, state) {
+                if (state is CurrenciesSuccessState) {
+                  return Expanded(
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: state.data.data.length,
+                      itemBuilder: (context, index) {
+                        final model = state.data.data[index];
+                        return FadeInRight(
+                          child: InkWell(
+                            onTap: () {
+                              CacheHelper.saveIdCountry(model.id);
+                              navigateTo(context, const AdsView());
+                            },
+                            child: Card(
+                              elevation: 5,
+                              shadowColor: Colors.white54,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0.r),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 12.h,
+                                  horizontal: 16.w,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Image.network(
+                                      model.image,
+                                      // Res.kuwait,
+                                      height: 40,
+                                      width: 40,
+                                    ),
+                                    SizedBox(
+                                      width: 27.w,
+                                    ),
+                                    Text(
+                                      model.name,
+                                      // 'Kuwait',
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ],
-                        ),
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   );
-                },
-              ),
+                } else {
+                  return Container();
+                }
+              },
             ),
-            // const SizedBox(
-            //   height: 60,
-            // )
           ],
         ),
       ),

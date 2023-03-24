@@ -1,7 +1,8 @@
-import 'package:begoo_souq/components/navigate.dart';
+import 'package:begoo_souq/components/helper_methods.dart';
 import 'package:begoo_souq/features/pages/categories/widgets/products_widget.dart';
 import 'package:begoo_souq/features/products/view.dart';
 import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -151,11 +152,15 @@ class _CategoriesViewState extends State<CategoriesView> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: const Color(0xffEFEFEF),
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(50),
-                        topLeft: Radius.circular(50),
-                        bottomRight: Radius.circular(50),
-                        topRight: Radius.circular(50),
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(
+                            context.locale.languageCode == 'en' ? 50 : 0),
+                        topRight: Radius.circular(
+                            context.locale.languageCode == 'en' ? 50 : 0),
+                        topLeft: Radius.circular(
+                            context.locale.languageCode == 'ar' ? 50 : 0),
+                        bottomLeft: Radius.circular(
+                            context.locale.languageCode == 'ar' ? 50 : 0),
                       ),
                       border: _sideMenuWidth != 0
                           ? Border.all(

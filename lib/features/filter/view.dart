@@ -16,6 +16,7 @@ class Filter extends StatefulWidget {
 }
 
 class _FilterState extends State<Filter> {
+  String selectedValue = "Brand";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

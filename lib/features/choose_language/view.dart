@@ -1,12 +1,11 @@
 import 'package:begoo_souq/components/default_button.dart';
 import 'package:begoo_souq/features/choose_country/view.dart';
-import 'package:begoo_souq/generated/locale_keys.g.dart';
 import 'package:begoo_souq/res.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../components/navigate.dart';
+import '../../components/helper_methods.dart';
 
 class ChooseLanguageView extends StatefulWidget {
   const ChooseLanguageView({Key? key}) : super(key: key);
@@ -44,8 +43,7 @@ class _ChooseLanguageViewState extends State<ChooseLanguageView> {
               height: 45.h,
             ),
             Text(
-              LocaleKeys.CHOOSE_COUNTRY.tr(),
-              // 'Choose Language',
+              'Choose Language',
               style: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.bold),
             ),
             SizedBox(
@@ -55,7 +53,7 @@ class _ChooseLanguageViewState extends State<ChooseLanguageView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  LocaleKeys.Please_Choose_your_Country.tr(),
+                  'Please Choose your language !',
                   style: TextStyle(
                     fontSize: 13.sp,
                   ),
@@ -65,42 +63,14 @@ class _ChooseLanguageViewState extends State<ChooseLanguageView> {
             SizedBox(
               height: 55.h,
             ),
-            Column(
-              children: [
-                Text(
-                  'Lorem Ipsum is simply dummy text of the',
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                  ),
+            SizedBox(
+              width: 312.w,
+              child: Text(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s'",
+                style: TextStyle(
+                  fontSize: 15.sp,
                 ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                Text(
-                  'printing and typesetting industry. Lorem',
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                  ),
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                Text(
-                  'Ipsum has been the industry\'s standard',
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                  ),
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                Text(
-                  'dummy text ever since the 1500s',
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                  ),
-                ),
-              ],
+              ),
             ),
             SizedBox(
               height: 55.h,

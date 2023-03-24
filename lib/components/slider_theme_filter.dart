@@ -5,8 +5,9 @@ import 'my_colors.dart';
 class SliderThemeFilter extends StatefulWidget {
   late RangeValues currentRangeValues;
   SliderThemeFilter({
+    Key? key,
     required this.currentRangeValues,
-  });
+  }) : super(key: key);
 
   @override
   State<SliderThemeFilter> createState() => _SliderThemeFilterState();
