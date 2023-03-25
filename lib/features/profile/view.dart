@@ -1,6 +1,14 @@
+import 'package:begoo_souq/components/custom_appBar.dart';
+import 'package:begoo_souq/components/default_button.dart';
 import 'package:begoo_souq/components/helper_methods.dart';
+import 'package:begoo_souq/features/address/view.dart';
+import 'package:begoo_souq/features/change_password/view.dart';
 import 'package:begoo_souq/features/edit_profile/view.dart';
 import 'package:begoo_souq/features/login/view.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
+import 'package:begoo_souq/network/local/cache_helper.dart';
+import 'package:begoo_souq/res.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,17 +20,10 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Profile',
-          style: TextStyle(
-            color: const Color(0xff505050),
-            fontSize: 15.sp,
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: const Color(0xffFAFAFA),
+      appBar: CustomAppBar(
+        isTitle: true,
+        title: LocaleKeys.PROFILE.tr(),
+        isLeading: true,
       ),
       backgroundColor: const Color(0xffFAFAFA),
       body: ListView(
@@ -40,8 +41,7 @@ class ProfileView extends StatelessWidget {
               children: [
                 ClipRRect(
                   child: SvgPicture.asset(
-                    'assets/images/fb.svg',
-                    // AppAssets.APP_BAR_LOGO,
+                    Res.Apple,
                     fit: BoxFit.fill,
                   ),
                   // 'assets/images/logo.svg',
@@ -50,7 +50,7 @@ class ProfileView extends StatelessWidget {
                   height: 10.h,
                 ),
                 Text(
-                  'User Name',
+                  CacheHelper.getName(),
                   style: TextStyle(
                     fontSize: 20.sp,
                     color: Colors.white,
@@ -60,7 +60,7 @@ class ProfileView extends StatelessWidget {
                   height: 10.h,
                 ),
                 Text(
-                  'user@gmail.com',
+                  CacheHelper.getEmail(),
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: Colors.white,
@@ -236,8 +236,6 @@ class ProfileView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      // '${AppLocalizations.of(context)?.translate("FAVORITES")}',
-
                       'Favorites',
                       style: TextStyle(
                         color: HexColor('#1A1A1A'),
@@ -261,7 +259,9 @@ class ProfileView extends StatelessWidget {
           ),
           InkWell(
             borderRadius: BorderRadius.circular(10),
-            onTap: () {},
+            onTap: () {
+              navigateTo(context, const AddressView());
+            },
             child: Container(
               height: 50,
               //width: 90,
@@ -280,7 +280,6 @@ class ProfileView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      // '${AppLocalizations.of(context)?.translate("My_Addresses")}',
                       'My Address',
                       style: TextStyle(
                         color: HexColor('#1A1A1A'),
@@ -304,7 +303,9 @@ class ProfileView extends StatelessWidget {
           ),
           InkWell(
             borderRadius: BorderRadius.circular(10),
-            onTap: () {},
+            onTap: () {
+              navigateTo(context, const ChangePasswordView());
+            },
             child: Container(
               height: 50,
               //width: 90,
@@ -323,7 +324,6 @@ class ProfileView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      // '${AppLocalizations.of(context)?.translate("Change_Password")}',
                       'Change Password',
                       style: TextStyle(
                         color: HexColor('#1A1A1A'),
@@ -345,31 +345,15 @@ class ProfileView extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          InkWell(
+          DefaultButton(
+            height: 50.h,
+            title: LocaleKeys.LOGOUT.tr(),
+            fontSize: 20.sp,
+            color: const Color(0xffef5a2e),
             onTap: () {
               navigateTo(context, const LoginView());
             },
-            child: Container(
-              height: 50.h,
-              width: 300.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: const Color(0xffef5a2e),
-              ),
-              child: const Center(
-                child: Text(
-                  // '${AppLocalizations.of(context)?.translate("Logout")}',
-                  'Logout',
-                  style: TextStyle(
-                    height: 1,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          )
         ],
       ),
     );

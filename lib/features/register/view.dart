@@ -1,3 +1,4 @@
+import 'package:begoo_souq/components/app_dialog.dart';
 import 'package:begoo_souq/components/custom_text_field.dart';
 import 'package:begoo_souq/components/default_button.dart';
 import 'package:begoo_souq/components/helper_methods.dart';
@@ -77,19 +78,19 @@ class _RegisterViewState extends State<RegisterView> {
                         children: [
                           Row(
                             children: [
-                              Radio(
-                                onChanged: (newValue) => setState(() =>
-                                    _bloc.groupValueGender = newValue as int),
+                              Radio<Gender>(
+                                onChanged: (newValue) => setState(
+                                    () => _bloc.groupValueGender = newValue),
                                 groupValue: _bloc.groupValueGender,
-                                value: 1,
+                                value: Gender.male,
                                 activeColor: Colors.red,
                               ),
                               Text(
                                 'Male',
                                 style: TextStyle(
-                                  color: _bloc.groupValueGender == 1
-                                      ? Colors.red
-                                      : null,
+                                  // color: _bloc.groupValueGender == 1
+                                  //     ? Colors.red
+                                  //     : null,
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.normal,
                                 ),
@@ -101,19 +102,19 @@ class _RegisterViewState extends State<RegisterView> {
                           ),
                           Row(
                             children: [
-                              Radio(
-                                onChanged: (newValue) => setState(() =>
-                                    _bloc.groupValueGender = newValue as int),
+                              Radio<Gender>(
+                                onChanged: (newValue) => setState(
+                                    () => _bloc.groupValueGender = newValue),
                                 groupValue: _bloc.groupValueGender,
-                                value: 0,
+                                value: Gender.female,
                                 activeColor: Colors.red,
                               ),
                               Text(
                                 'Female',
                                 style: TextStyle(
-                                  color: _bloc.groupValueGender == 0
-                                      ? Colors.red
-                                      : null,
+                                  // color: _bloc.groupValueGender == 0
+                                  //     ? Colors.red
+                                  //     : null,
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.normal,
                                 ),
@@ -326,15 +327,18 @@ class _RegisterViewState extends State<RegisterView> {
                     bloc: _bloc,
                     listener: (context, state) {
                       if (state is RegisterSuccessState) {
-                        showToast(
-                            msg: state.msg,
-                            context: context,
-                            type: MessageType.success);
-                        navigateTo(
-                            context,
-                            PagesView(
-                              selectedTabIndex: 0,
-                            ));
+                        signUpConfirmationDialog(context, onClickDoneBtn: () {
+                          navigateAndFinish(
+                              context,
+                              PagesView(
+                                selectedTabIndex: 0,
+                              ));
+                        });
+                        // showToast(
+                        //     msg: state.msg,
+                        //     context: context,
+                        //     type: MessageType.success);
+
                       } else if (state is RegisterFailedState) {
                         showToast(
                             msg: state.msg,

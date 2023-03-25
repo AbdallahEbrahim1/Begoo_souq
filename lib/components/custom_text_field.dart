@@ -41,6 +41,7 @@ class CustomTextFiled extends StatelessWidget {
         validator: validator,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
+          hintStyle: const TextStyle(color: Color(0xff1A1818)),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(8.0.r),

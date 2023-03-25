@@ -23,7 +23,9 @@ class RegisterBloc extends Bloc<RegisterEvents, RegisterStates> {
   final passwordFocus = FocusNode();
   final confirmPasswordFocus = FocusNode();
   final buttonRegisterFocusNode = FocusNode();
-  int groupValueGender = -1;
+  Gender? groupValueGender = Gender.male;
+
+  // int groupValueGender = -1;
   int? value;
   Future<void> _register(
       RegisterEvent event, Emitter<RegisterStates> emit) async {
@@ -33,7 +35,7 @@ class RegisterBloc extends Bloc<RegisterEvents, RegisterStates> {
       url: "api/register",
       body: {
         "name": nameController.text,
-        "email": passwordController.text,
+        "email": emailController.text,
         "code": '+965',
         "phone": mobileController.text,
         "password": passwordController.text,
@@ -41,6 +43,7 @@ class RegisterBloc extends Bloc<RegisterEvents, RegisterStates> {
         "gender": groupValueGender.toString(),
       },
     );
+    print(groupValueGender.toString());
     if (response.success) {
       emit(RegisterSuccessState(msg: response.msg));
     } else {
@@ -48,3 +51,20 @@ class RegisterBloc extends Bloc<RegisterEvents, RegisterStates> {
     }
   }
 }
+
+enum Gender {
+  male,
+  female,
+}
+//{
+// "status":1,
+// "message":"Registered successfully",
+// "data":
+// {
+// "id":380,
+// "name":"abdaallaah",
+// "email":"abdaallaah@gmail.com",
+// "code":"+965","phone":"11223344",
+// "authorization":"$2y$10$2nXUbPZTwV.DBURJFMyOIemOVO0JQLk7TseaL7hlh3MfYjBFSa7bO",
+// }
+// }

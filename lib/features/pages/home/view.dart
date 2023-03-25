@@ -91,7 +91,7 @@ class _HomeViewState extends State<HomeView> {
               borderRadius: BorderRadius.circular(10.0.r),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10.r),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: CustomTextFiled(
                 isSearch: true,
                 isEnabled: false,
@@ -102,24 +102,6 @@ class _HomeViewState extends State<HomeView> {
                 },
               ),
             ),
-            // Container(
-            //   height: 45.h,
-            //   decoration: BoxDecoration(
-            //     color: HexColor('#FFFFFF'),
-            //     borderRadius: BorderRadius.circular(10.r),
-            //   ),
-            //   child: TextField(
-            //     decoration: InputDecoration(
-            //       enabledBorder: InputBorder.none,
-            //       focusedBorder: InputBorder.none,
-            //       hintText: 'Search',
-            //       contentPadding: EdgeInsets.symmetric(
-            //         vertical: 15.h,
-            //         horizontal: 40.w,
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ),
           SizedBox(
             height: 200.h,

@@ -3,9 +3,9 @@
 // import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 //
 // class AppleSignInService {
-//   final signInManager = locator<LoginManager>();
-//   final _toast = locator<ToastTemplate>();
-//   final _prefs = locator<PrefsService>();
+//   // final signInManager = locator<LoginManager>();
+//   // final _toast = locator<ToastTemplate>();
+//   // final _prefs = locator<PrefsService>();
 //   // final options = const IOSOptions(accessibility: IOSAccessibility.first_unlock);
 //   final keyChain = new FlutterSecureStorage();
 //
@@ -48,26 +48,26 @@
 //         // print('email: ${result.email??""} \n name: ${result.givenName??""}');
 //         // Read all values
 //
-//         await signInManager.socialLogin(
-//           request: SocialLoginRequest(
-//             email: result.email ??
-//                 await keyChain.read(key: "email") ??
-//                 await keyChain.read(key: "userId") ??
-//                 '',
-//             name: result.givenName ?? await keyChain.read(key: "name"),
-//           ),
-//         );
+//         // await signInManager.socialLogin(
+//         //   request: SocialLoginRequest(
+//         //     email: result.email ??
+//         //         await keyChain.read(key: "email") ??
+//         //         await keyChain.read(key: "userId") ??
+//         //         '',
+//         //     name: result.givenName ?? await keyChain.read(key: "name"),
+//         //   ),
+//         // );
 //       }).onError((error, stackTrace) {
 //         print("XXXXX sign in with apple custom error ==> $error");
-//         _toast.show(_prefs.appLanguage == "en"
-//             ? "something went wrong , try again later"
-//             : "حدث خطآ ما ، برجاء المحاولة لاحقا");
+//         // _toast.show(_prefs.appLanguage == "en"
+//         //     ? "something went wrong , try again later"
+//         //     : "حدث خطآ ما ، برجاء المحاولة لاحقا");
 //       });
 //     } else {
 //       print('Apple SignIn is not available for your device');
-//       _toast.show(_prefs.appLanguage == "en"
-//           ? 'Apple SignIn is not available for your device'
-//           : "تسجيل الدخول بواسطة ابل غير متاح لجهازك");
+//       // _toast.show(_prefs.appLanguage == "en"
+//       //     ? 'Apple SignIn is not available for your device'
+//       //     : "تسجيل الدخول بواسطة ابل غير متاح لجهازك");
 //     }
 //   }
 // }

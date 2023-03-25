@@ -24,7 +24,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final _bloc = KiwiContainer().resolve<LoginBloc>();
-
+  // final googleSignInService = GoogleSignInService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -209,7 +209,9 @@ class _LoginViewState extends State<LoginView> {
                         width: 15.0.w,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          // await googleSignInService.signIn();
+                        },
                         child: SvgPicture.asset('assets/images/gmail.svg'),
                       ),
                     ],

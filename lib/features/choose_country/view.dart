@@ -38,28 +38,34 @@ class _ChooseCountryViewState extends State<ChooseCountryView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              Res.logo,
-              height: 80.h,
-              width: 120.w,
+            FadeInDown(
+              child: Image.asset(
+                Res.logo,
+                height: 80.h,
+                width: 120.w,
+              ),
             ),
             SizedBox(
               height: 40.h,
             ),
-            Text(
-              LocaleKeys.CHOOSE_COUNTRY.tr(),
-              style: TextStyle(
-                fontSize: 32.sp,
-                fontWeight: FontWeight.bold,
+            FadeInRight(
+              child: Text(
+                LocaleKeys.CHOOSE_COUNTRY.tr(),
+                style: TextStyle(
+                  fontSize: 32.sp,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(
               height: 25.h,
             ),
-            Text(
-              LocaleKeys.Please_Choose_your_Country.tr(),
-              style: TextStyle(
-                fontSize: 13.sp,
+            FadeInLeft(
+              child: Text(
+                LocaleKeys.Please_Choose_your_Country.tr(),
+                style: TextStyle(
+                  fontSize: 13.sp,
+                ),
               ),
             ),
             SizedBox(
@@ -76,47 +82,91 @@ class _ChooseCountryViewState extends State<ChooseCountryView> {
                       itemCount: state.data.data.length,
                       itemBuilder: (context, index) {
                         final model = state.data.data[index];
-                        return FadeInRight(
-                          child: InkWell(
-                            onTap: () {
-                              CacheHelper.saveIdCountry(model.id);
-                              navigateTo(context, const AdsView());
-                            },
-                            child: Card(
-                              elevation: 5,
-                              shadowColor: Colors.white54,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0.r),
-                              ),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 12.h,
-                                  horizontal: 16.w,
-                                ),
-                                child: Row(
-                                  children: [
-                                    Image.network(
-                                      model.image,
-                                      // Res.kuwait,
-                                      height: 40,
-                                      width: 40,
+                        return index.isOdd
+                            ? FadeInRight(
+                                child: InkWell(
+                                  onTap: () {
+                                    CacheHelper.saveIdCountry(model.id);
+                                    navigateTo(context, const AdsView());
+                                  },
+                                  child: Card(
+                                    elevation: 5,
+                                    shadowColor: Colors.white54,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(8.0.r),
                                     ),
-                                    SizedBox(
-                                      width: 27.w,
-                                    ),
-                                    Text(
-                                      model.name,
-                                      // 'Kuwait',
-                                      style: TextStyle(
-                                        fontSize: 16.sp,
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 12.h,
+                                        horizontal: 16.w,
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Image.network(
+                                            model.image,
+                                            // Res.kuwait,
+                                            height: 40,
+                                            width: 40,
+                                          ),
+                                          SizedBox(
+                                            width: 27.w,
+                                          ),
+                                          Text(
+                                            model.name,
+                                            // 'Kuwait',
+                                            style: TextStyle(
+                                              fontSize: 16.sp,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        );
+                              )
+                            : FadeInLeft(
+                                child: InkWell(
+                                  onTap: () {
+                                    CacheHelper.saveIdCountry(model.id);
+                                    navigateTo(context, const AdsView());
+                                  },
+                                  child: Card(
+                                    elevation: 5,
+                                    shadowColor: Colors.white54,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(8.0.r),
+                                    ),
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 12.h,
+                                        horizontal: 16.w,
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Image.network(
+                                            model.image,
+                                            // Res.kuwait,
+                                            height: 40,
+                                            width: 40,
+                                          ),
+                                          SizedBox(
+                                            width: 27.w,
+                                          ),
+                                          Text(
+                                            model.name,
+                                            // 'Kuwait',
+                                            style: TextStyle(
+                                              fontSize: 16.sp,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
                       },
                     ),
                   );

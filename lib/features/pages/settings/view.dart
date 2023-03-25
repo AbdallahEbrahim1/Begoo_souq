@@ -1,445 +1,99 @@
+import 'package:begoo_souq/components/custom_appBar.dart';
 import 'package:begoo_souq/components/helper_methods.dart';
-import 'package:begoo_souq/features/about_us/view.dart';
-import 'package:begoo_souq/features/contact_us/view.dart';
+import 'package:begoo_souq/features/app_info/view.dart';
 import 'package:begoo_souq/features/notifications/view.dart';
+import 'package:begoo_souq/features/pages/settings/bloc/bloc.dart';
+import 'package:begoo_souq/features/pages/settings/widgets/build_list_tile.dart';
 import 'package:begoo_souq/features/profile/view.dart';
-import 'package:begoo_souq/features/terms_conditions/view.dart';
+import 'package:begoo_souq/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:kiwi/kiwi.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  final _bloc = KiwiContainer().resolve<SettingsBloc>();
+
+  @override
+  void initState() {
+    _bloc.add(GetSettingsEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Settings',
-          style: TextStyle(
-            color: HexColor('#505050'),
-            fontSize: 15.sp,
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: HexColor('#FAFAFA'),
+      appBar: CustomAppBar(
+        isTitle: true,
+        title: LocaleKeys.SETTINGS.tr(),
       ),
       backgroundColor: HexColor('#FAFAFA'),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: ListView(
-          children: [
-            InkWell(
-              highlightColor: const Color(0xffEF5A2E),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {
-                navigateTo(context, const ProfileView());
-              },
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'My Account',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
+      body: ListView(
+        children: [
+          BuildListTile(
+            onTap: () {
+              navigateTo(context, const ProfileView());
+            },
+            title: LocaleKeys.MY_ACCOUNT.tr(),
+          ),
+          BuildListTile(
+            onTap: () {
+              navigateTo(context, const NotificationsView());
+            },
+            title: LocaleKeys.NOTIFICATIONS.tr(),
+          ),
+          BuildListTile(
+            onTap: () {},
+            title: LocaleKeys.LANGUAGE.tr(),
+          ),
+          BuildListTile(
+            onTap: () {
+              // navigateTo(context, const ChView());
+            },
+            title: LocaleKeys.CHOOSE_COUNTRY.tr(),
+          ),
+          BlocBuilder(
+            bloc: _bloc,
+            builder: (context, state) {
+              if (state is SettingsSuccessState) {
+                final model = state.model.data;
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: model.pages.length,
+                  // itemCount: 3,
+                  itemBuilder: (context, index) => BuildListTile(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => AppInfoView(
+                            title: model.pages[index].title,
+                            contect: model.pages[index].contect,
+                          ),
                         ),
-                      ),
-                      IconButton(
-                        color: Colors.red,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
+                      );
+                    },
+                    title: model.pages[index].title,
                   ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              // splashColor: Colors.red,
-              highlightColor: HexColor('#EF5A2E'),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {
-                navigateTo(context, const NotificationsView());
-              },
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        // '${AppLocalizations.of(context)?.translate("NOTIFICATIONS")}',
-                        'Notifications',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              // splashColor: Colors.red,
-              highlightColor: HexColor('#EF5A2E'),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {
-                // navigateTo(context, const ());
-              },
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Language',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              // splashColor: Colors.red,
-              highlightColor: HexColor('#EF5A2E'),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {
-                // navigateTo(context, const ());
-              },
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Choose Country',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
-                        ),
-                      ),
-                      IconButton(
-                        color: Colors.red,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              // splashColor: Colors.red,
-              highlightColor: HexColor('#EF5A2E'),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {
-                navigateTo(context, const AboutUsView());
-              },
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'About Bego',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
-                        ),
-                      ),
-                      IconButton(
-                        color: Colors.red,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              // splashColor: Colors.red,
-              highlightColor: HexColor('#EF5A2E'),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {
-                navigateTo(context, const TermsConditionsScreen());
-              },
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Terms & Conditions',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
-                        ),
-                      ),
-                      IconButton(
-                        color: Colors.red,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              // splashColor: Colors.red,
-              highlightColor: HexColor('#EF5A2E'),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {},
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        // '${AppLocalizations.of(context)?.translate("PRIVACY_POLICIES")}',
-                        'Privacy Policies',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
-                        ),
-                      ),
-                      IconButton(
-                        color: Colors.red,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              // splashColor: Colors.red,
-              highlightColor: HexColor('#EF5A2E'),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {
-                navigateTo(context, const ContactUsView());
-              },
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Contact Us',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
-                        ),
-                      ),
-                      IconButton(
-                        color: Colors.red,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              // splashColor: Colors.red,
-              highlightColor: HexColor('#EF5A2E'),
-              borderRadius: BorderRadius.circular(10),
-              onTap: () {},
-              child: Container(
-                height: 50,
-                //width: 90,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        // '${AppLocalizations.of(context)?.translate("RATE_APP")}',
-                        'Rate App',
-                        style: TextStyle(
-                          color: HexColor('#1A1A1A'),
-                          fontSize: 15,
-                        ),
-                      ),
-                      IconButton(
-                        color: Colors.red,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+                );
+              } else {
+                return Container();
+              }
+            },
+          ),
+          BuildListTile(
+            onTap: () {},
+            title: LocaleKeys.RATE_APP.tr(),
+          ),
+        ],
       ),
     );
   }

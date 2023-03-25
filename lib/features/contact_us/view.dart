@@ -32,7 +32,7 @@ class ContactUsView extends StatelessWidget {
       appBar: CustomAppBar(
         isTitle: true,
         isLeading: true,
-        title: 'Contact Us',
+        title: LocaleKeys.Contact_Us.tr(),
       ),
       body: Container(
           color: const Color(0xffFAFAFA),
